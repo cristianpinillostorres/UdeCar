@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UdeCar</string>
+
+    <string name="btnMotor">Modificar motor</string>
+    <string name="btnFrenos">Modificar Frenos</string>
+    <string name="btnTransmision">Modificar Transmision</string>
+</resources>
