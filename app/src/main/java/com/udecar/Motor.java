@@ -9,6 +9,7 @@ public class Motor {
     private int torque;
     private String tipoAlimentacion;
     private int algo;
+    private int algo1;
 
 
     public Motor(int idMotor, String nombreMotor, int cilindraje, int numeroCilindros, int potencia, int torque, String tipoAlimentacion) {
