@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +21,12 @@ public class ModificarMotor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_modificar_motor);
+
+            Motor motor1 = new Motor(1,"motor1",100,100);
+
+            String informacion = "Nombre: "+motor1.getNombreMotor()+"\n"+"Cilindraje: "+motor1.getCilindraje()+"\n"+"Potencia: "+motor1.getPotencia()+"\n";
+            final TextView labelInfo = findViewById(R.id.infoMotor);
+            labelInfo.setText(informacion);
 
             // bajo
             //inicializar componentes

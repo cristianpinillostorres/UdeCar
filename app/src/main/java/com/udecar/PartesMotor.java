@@ -10,7 +10,6 @@ public class PartesMotor {
         this.categoria = categoria;
         this.nombreParte = nombreParte;
     }
-
     public int getIdParte() {
         return idParte;
     }

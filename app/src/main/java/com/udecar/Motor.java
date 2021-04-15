@@ -4,8 +4,17 @@ public class Motor {
     private int idMotor;
     private String nombreMotor;
     private int cilindraje;
-    private int potencia;
-    private int torque;
+    private float potencia;
+    private String tipoBujia;
+    private String tipoFiltro;
+
+    public Motor(int idMotor, String nombreMotor, int cilindraje, int potencia) {
+        this.idMotor = idMotor;
+        this.nombreMotor = nombreMotor;
+        this.cilindraje = cilindraje;
+        this.potencia = potencia;
+
+    }
 
     public int getIdMotor() {
         return idMotor;
@@ -31,21 +40,27 @@ public class Motor {
         this.cilindraje = cilindraje;
     }
 
-    public int getPotencia() {
+    public float getPotencia() {
         return potencia;
     }
 
-    public void setPotencia(int potencia) {
+    public void setPotencia(float potencia) {
         this.potencia = potencia;
     }
 
-    public int getTorque() {
-        return torque;
+    public String getTipoBujia() {
+        return tipoBujia;
     }
 
-    public void setTorque(int torque) {
-        this.torque = torque;
+    public void setTipoBujia(String tipoBujia) {
+        this.tipoBujia = tipoBujia;
     }
 
+    public String getTipoFiltro() {
+        return tipoFiltro;
+    }
 
+    public void setTipoFiltro(String tipoFiltro) {
+        this.tipoFiltro = tipoFiltro;
+    }
 }
