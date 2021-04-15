@@ -24,7 +24,7 @@ public class ModificarMotor extends AppCompatActivity {
 
             Motor motor1 = new Motor(1,"motor1",100,100);
 
-            String informacion = "Nombre: "+motor1.getNombreMotor()+"\n"+"Cilindraje: "+motor1.getCilindraje()+"\n"+"Potencia: "+motor1.getPotencia()+"\n";
+            String informacion = "Nombres: "+motor1.getNombreMotor()+"\n"+"Cilindraje: "+motor1.getCilindraje()+"\n"+"Potencia: "+motor1.getPotencia()+"\n";
             final TextView labelInfo = findViewById(R.id.infoMotor);
             labelInfo.setText(informacion);
 
