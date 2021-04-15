@@ -14,25 +14,29 @@ import java.util.ArrayList;
 public class ModificarMotor extends AppCompatActivity {
 
     Spinner listaBujias;
+    Spinner listaFiltros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_modificar_motor);
+
+            // bajo
             //inicializar componentes
-            listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
-            //listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
-            //listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
-            //listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
+            listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias); //
+
+            // 6% a la potencia
+            listaFiltros = (Spinner) findViewById(R.id.ddl_listaFiltros);// 6% a la potencia
+
             //llenar Spinner
             LlenarSpiner();
     }
 
     public void LlenarSpiner(){
 
-        PartesMotor parte1 = new PartesMotor(1, "Bujia A");
-        PartesMotor parte2 = new PartesMotor(2, "Bujia B");
-        PartesMotor parte3 = new PartesMotor(2, "Bujia C");
+        PartesMotor parte1 = new PartesMotor(1, 1,"Bujia A");
+        PartesMotor parte2 = new PartesMotor(2, 1,"Bujia B");
+        PartesMotor parte3 = new PartesMotor(2, 2,"Bujia C");
         //Creacion del arrayList de tipo "PartesMotor"
         ArrayList<String> partes = new ArrayList<>();
         //llenado del arrayList

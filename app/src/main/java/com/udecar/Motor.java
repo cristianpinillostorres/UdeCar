@@ -4,21 +4,8 @@ public class Motor {
     private int idMotor;
     private String nombreMotor;
     private int cilindraje;
-    private int numeroCilindros;
     private int potencia;
     private int torque;
-    private String tipoAlimentacion;
-
-
-    public Motor(int idMotor, String nombreMotor, int cilindraje, int numeroCilindros, int potencia, int torque, String tipoAlimentacion) {
-        this.idMotor = idMotor;
-        this.nombreMotor = nombreMotor;
-        this.cilindraje = cilindraje;
-        this.numeroCilindros = numeroCilindros;
-        this.potencia = potencia;
-        this.torque = torque;
-        this.tipoAlimentacion = tipoAlimentacion;
-    }
 
     public int getIdMotor() {
         return idMotor;
@@ -44,14 +31,6 @@ public class Motor {
         this.cilindraje = cilindraje;
     }
 
-    public int getNumeroCilindros() {
-        return numeroCilindros;
-    }
-
-    public void setNumeroCilindros(int numeroCilindros) {
-        this.numeroCilindros = numeroCilindros;
-    }
-
     public int getPotencia() {
         return potencia;
     }
@@ -68,12 +47,5 @@ public class Motor {
         this.torque = torque;
     }
 
-    public String getTipoAlimentacion() {
-        return tipoAlimentacion;
-    }
-
-    public void setTipoAlimentacion(String tipoAlimentacion) {
-        this.tipoAlimentacion = tipoAlimentacion;
-    }
 
 }
