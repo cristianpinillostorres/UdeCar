@@ -1,4 +1,4 @@
-package com.udecar;
+package com.udecar.Datos;
 
 public class Motor {
     private int idMotor;
@@ -8,7 +8,7 @@ public class Motor {
     private String tipoBujia;
     private String tipoFiltro;
 
-    public Motor(int idMotor, String nombreMotor, int cilindraje, int potencia) {
+    public Motor(int idMotor, String nombreMotor, int cilindraje, float potencia) {
         this.idMotor = idMotor;
         this.nombreMotor = nombreMotor;
         this.cilindraje = cilindraje;

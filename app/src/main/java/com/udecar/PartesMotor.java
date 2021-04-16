@@ -1,6 +1,7 @@
 package com.udecar;
 
 public class PartesMotor {
+
     private int idParte;
     private int categoria;
     private String nombreParte;
