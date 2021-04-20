@@ -25,6 +25,17 @@ public class ModificarMotor extends AppCompatActivity {
     //Objeto que apunta a la potencia con las modificacioens hechas
     private TextView rModificado;
 
+    //-----------------------------------------------------
+    //Aquí debe llegar el documento (tupla) desde el catálogo de modelos de autos
+
+    private float potenciaO = 111;
+    private float cilindraje = 1598;
+    private int idMotor = 1;
+    private String nombreMotor = "Motor Renault Stepway";
+    //private String nombreAuto;
+    //private ImageView imagenAuto;
+
+    //-----------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,7 +52,7 @@ public class ModificarMotor extends AppCompatActivity {
         rModificado = findViewById(R.id.tvRendimientoM);
 
         final TextView labelInfo = findViewById(R.id.infoMotor);
-        motor1 = new Motor(1,"Motor Renault Stepway",1598,111);
+        motor1 = new Motor(idMotor,nombreMotor,cilindraje,potenciaO);
 
         String informacion = "Nombres: "+motor1.getNombreMotor()+"\n"+"Cilindraje: "+motor1.getCilindraje()+"\n"+"Potencia: "+motor1.getPotencia()+"\n";
         rOriginal.setText("Horse power: "+ motor1.getPotencia());
@@ -78,24 +89,24 @@ public class ModificarMotor extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"selecciono: "+parent.getItemAtPosition(position).toString() ,Toast.LENGTH_SHORT).show();
                 switch(listaBujias.getSelectedItem().toString()){
                     case "U-GROOVE K20PR-U11":
-                        motor1.setPotencia((float) (motor1.getPotencia()+( motor1.getPotencia()*0.06)));
+                        motor1.setPotencia((float) (potenciaO+( potenciaO*0.06)));
                         break;
                     case "PLATINUM TT PK20TT":
-                        motor1.setPotencia((float) (motor1.getPotencia()+( motor1.getPotencia()*0.04)));
+                        motor1.setPotencia((float) (potenciaO+( potenciaO*0.04)));
                         break;
                     case "DOUBLE PLATINUM PK20PR11":
-                        motor1.setPotencia((float) (motor1.getPotencia()+( motor1.getPotencia()*0.055)));
+                        motor1.setPotencia((float) (potenciaO+( potenciaO*0.055)));
                         break;
                     case "IRIDIUM LONG LIFE SK20PR-L11":
-                        motor1.setPotencia((float) (motor1.getPotencia()+( motor1.getPotencia()*0.023)));
+                        motor1.setPotencia((float) (potenciaO+( potenciaO*0.023)));
                         break;
                     case "IRIDIUM POWER IK20":
-                        motor1.setPotencia((float) (motor1.getPotencia()+( motor1.getPotencia()*0.045)));
+                        motor1.setPotencia((float) (potenciaO+( potenciaO*0.045)));
                         break;
                     default:
                         break;
                 }
-                rModificado.setText("Horse power: "+motor1.getPotencia());
+                rModificado.setText("hp: "+motor1.getPotencia());
             }
 
             @Override

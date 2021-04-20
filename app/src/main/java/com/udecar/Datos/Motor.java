@@ -3,17 +3,16 @@ package com.udecar.Datos;
 public class Motor {
     private int idMotor;
     private String nombreMotor;
-    private int cilindraje;
+    private float cilindraje;
     private float potencia;
     private String tipoBujia;
     private String tipoFiltro;
 
-    public Motor(int idMotor, String nombreMotor, int cilindraje, float potencia) {
+    public Motor(int idMotor, String nombreMotor, float cilindraje, float potencia) {
         this.idMotor = idMotor;
         this.nombreMotor = nombreMotor;
         this.cilindraje = cilindraje;
         this.potencia = potencia;
-
     }
 
     public int getIdMotor() {
@@ -32,11 +31,11 @@ public class Motor {
         this.nombreMotor = nombreMotor;
     }
 
-    public int getCilindraje() {
+    public float getCilindraje() {
         return cilindraje;
     }
 
-    public void setCilindraje(int cilindraje) {
+    public void setCilindraje(float cilindraje) {
         this.cilindraje = cilindraje;
     }
 
