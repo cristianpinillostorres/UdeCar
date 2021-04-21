@@ -1,22 +1,27 @@
 package com.udecar;
+import java.io.Serializable;
 
-public class Automovil {
+public class Automovil implements Serializable{
     private int idAutomovil;
     private String nombreAutomovil;
-    private float tamañoAutomovil;
+    private int imagenAutomovil;//cambiar para usar BD
     private float pesoAutomovil;
-    private String motorAutomovil;
-    private String frenosAutomovil;
-    private String transmisionAutomovil;
+    private String descripcion;
+    private String categoria;
+    private String nombreMotor ;
+    private float potenciaMotor;
+    private float cilindrajeMotor;
 
-    public Automovil(int idAutomovil, String nombreAutomovil, float tamañoAutomovil, float pesoAutomovil, String motorAutomovil, String frenosAutomovil, String transmisionAutomovil) {
+    public Automovil(int idAutomovil, String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor, float potenciaMotor, float cilindrajeMotor) {
         this.idAutomovil = idAutomovil;
         this.nombreAutomovil = nombreAutomovil;
-        this.tamañoAutomovil = tamañoAutomovil;
+        this.imagenAutomovil = imagenAutomovil;
         this.pesoAutomovil = pesoAutomovil;
-        this.motorAutomovil = motorAutomovil;
-        this.frenosAutomovil = frenosAutomovil;
-        this.transmisionAutomovil = transmisionAutomovil;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.nombreMotor = nombreMotor;
+        this.potenciaMotor = potenciaMotor;
+        this.cilindrajeMotor = cilindrajeMotor;
     }
 
     public int getIdAutomovil() {
@@ -35,12 +40,12 @@ public class Automovil {
         this.nombreAutomovil = nombreAutomovil;
     }
 
-    public float getTamañoAutomovil() {
-        return tamañoAutomovil;
+    public int getImagenAutomovil() {
+        return imagenAutomovil;
     }
 
-    public void setTamañoAutomovil(float tamañoAutomovil) {
-        this.tamañoAutomovil = tamañoAutomovil;
+    public void setImagenAutomovil(int imagenAutomovil) {
+        this.imagenAutomovil = imagenAutomovil;
     }
 
     public float getPesoAutomovil() {
@@ -51,27 +56,44 @@ public class Automovil {
         this.pesoAutomovil = pesoAutomovil;
     }
 
-    public String getMotorAutomovil() {
-        return motorAutomovil;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setMotorAutomovil(String motorAutomovil) {
-        this.motorAutomovil = motorAutomovil;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getFrenosAutomovil() {
-        return frenosAutomovil;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setFrenosAutomovil(String frenosAutomovil) {
-        this.frenosAutomovil = frenosAutomovil;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public String getTransmisionAutomovil() {
-        return transmisionAutomovil;
+    public String getNombreMotor() {
+        return nombreMotor;
     }
 
-    public void setTransmisionAutomovil(String transmisionAutomovil) {
-        this.transmisionAutomovil = transmisionAutomovil;
+    public void setNombreMotor(String nombreMotor) {
+        this.nombreMotor = nombreMotor;
     }
+
+    public float getPotenciaMotor() {
+        return potenciaMotor;
+    }
+
+    public void setPotenciaMotor(float potenciaMotor) {
+        this.potenciaMotor = potenciaMotor;
+    }
+
+    public float getCilindrajeMotor() {
+        return cilindrajeMotor;
+    }
+
+    public void setCilindrajeMotor(float cilindrajeMotor) {
+        this.cilindrajeMotor = cilindrajeMotor;
+    }
+
 }

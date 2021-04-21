@@ -42,11 +42,8 @@ public class ModificarMotor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_motor);
 
-        // bajo
         //inicializar componentes
         listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
-
-        // 6% a la potencia
         //listaFiltros = (Spinner) findViewById(R.id.ddl_listaFiltros);// 6% a la potencia
         rOriginal = findViewById(R.id.tvRendimientoO);
         rModificado = findViewById(R.id.tvRendimientoM);
@@ -63,7 +60,6 @@ public class ModificarMotor extends AppCompatActivity {
     }
 
     public void LlenarSpiner(){
-
         PartesMotor parte1 = new PartesMotor(1, 1,"U-GROOVE K20PR-U11");                //Ejemplo, mejora 6%
         PartesMotor parte2 = new PartesMotor(2, 1,"PLATINUM TT PK20TT");                //Mejora 4%
         PartesMotor parte3 = new PartesMotor(3, 1,"DOUBLE PLATINUM PK20PR11");          //Mejora 5.5%
@@ -77,7 +73,6 @@ public class ModificarMotor extends AppCompatActivity {
         bujias.add(parte3.getNombreParte());
         bujias.add(parte4.getNombreParte());
         bujias.add(parte5.getNombreParte());
-
 
         //adaptador de tipo arrayList para el spinner
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, bujias);
