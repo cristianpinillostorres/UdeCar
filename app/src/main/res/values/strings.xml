@@ -5,6 +5,7 @@
     <string name="btnFrenos">Modificar Frenos</string>
     <string name="btnTransmision">Modificar Transmision</string>
     <string name="seleccionBujia">Seleccione una bujia a modificar</string>
+    <string name="btnTerminarModificacion">Terminar</string>
 
 
 </resources>

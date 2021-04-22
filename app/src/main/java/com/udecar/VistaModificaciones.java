@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 
 public class VistaModificaciones extends AppCompatActivity {
+
 
     private TextView tv_NombreAuto, tv_InfoAuto;
     private ImageView imgFoto;

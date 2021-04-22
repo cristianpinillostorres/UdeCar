@@ -119,5 +119,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/btnTerminarModificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#4AA2E8"
+            android:text="@string/btnTerminarModificacion"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="539dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

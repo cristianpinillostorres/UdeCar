@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class ModificarMotor extends AppCompatActivity {
 
+
     private Spinner listaBujias;
     //private Spinner listaFiltros;
     private Motor motor1;
