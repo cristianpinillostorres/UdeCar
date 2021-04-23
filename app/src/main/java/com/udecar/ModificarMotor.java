@@ -68,6 +68,7 @@ public class ModificarMotor extends AppCompatActivity {
         labelInfo.setText(informacion);
          //Llenar Spinner
         LlenarSpiner();
+
     }
 
     public void LlenarSpiner(){
