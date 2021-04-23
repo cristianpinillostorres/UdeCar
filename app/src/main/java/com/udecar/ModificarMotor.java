@@ -67,11 +67,12 @@ public class ModificarMotor extends AppCompatActivity {
         labelNombre.setText(nombre);
         labelInfo.setText(informacion);
          //Llenar Spinner
-        LlenarSpiner();
+        LlenarSpinerBujias();
+        LlenarSpinerFiltros();
 
     }
 
-    public void LlenarSpiner(){
+    public void LlenarSpinerBujias(){
         PartesMotor parte1 = new PartesMotor(1, 1,"U-GROOVE K20PR-U11");                //Ejemplo, mejora 6%
         PartesMotor parte2 = new PartesMotor(2, 1,"PLATINUM TT PK20TT");                //Mejora 4%
         PartesMotor parte3 = new PartesMotor(3, 1,"DOUBLE PLATINUM PK20PR11");          //Mejora 5.5%
@@ -119,6 +120,33 @@ public class ModificarMotor extends AppCompatActivity {
                         break;
                 }
                 labelRendimientoModificado.setText(""+motor.getPotencia());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    public void LlenarSpinerFiltros(){
+        //Partes de tipo Filtros de prueba
+        PartesMotor parte6 = new PartesMotor(6, 2,"U-GROOVE K20PR-U11");
+        PartesMotor parte7 = new PartesMotor(7, 2,"PLATINUM TT PK20TT");
+        PartesMotor parte8 = new PartesMotor(8, 2,"DOUBLE PLATINUM PK20PR11");
+
+        //Creacion del arrayList de tipo "PartesMotor"
+        ArrayList<String> filtros = new ArrayList<>();
+        //llenado del arrayList
+        filtros.add(parte6.getNombreParte());
+        filtros.add(parte7.getNombreParte());
+        filtros.add(parte8.getNombreParte());
+        //adaptador de tipo arrayList para el spinner que muestra las bujias
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, filtros);
+        listaFiltros.setAdapter(adaptador);
+
+        //Evento Spiner
+        listaBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
