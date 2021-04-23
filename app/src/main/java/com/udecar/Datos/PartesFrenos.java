@@ -1,16 +1,21 @@
-package com.udecar;
+package com.udecar.Datos;
 
-public class PartesMotor {
+public class PartesFrenos {
 
     private int idParte;
-    private int categoria;
     private String nombreParte;
+    private int categria;
 
-    public PartesMotor(int idParte, int categoria, String nombreParte) {
-        this.idParte = idParte;
-        this.categoria = categoria;
-        this.nombreParte = nombreParte;
+    public PartesFrenos(){
+
     }
+
+    public PartesFrenos(int idParte, String nombreParte, int categria) {
+        this.idParte = idParte;
+        this.nombreParte = nombreParte;
+        this.categria = categria;
+    }
+
     public int getIdParte() {
         return idParte;
     }
@@ -27,11 +32,11 @@ public class PartesMotor {
         this.nombreParte = nombreParte;
     }
 
-    public int getCategoria() {
-        return categoria;
+    public int getCategria() {
+        return categria;
     }
 
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
+    public void setCategria(int categria) {
+        this.categria = categria;
     }
 }

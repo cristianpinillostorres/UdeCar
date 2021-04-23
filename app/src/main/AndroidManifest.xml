@@ -11,7 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".VistaSeleccionarAuto"></activity>
         <activity android:name=".VistaModificaciones" />
-        <activity android:name=".ModificarTransmision" />
         <activity android:name=".ModificarFrenos" />
         <activity android:name=".ModificarMotor" />
         <activity android:name=".MainActivity">

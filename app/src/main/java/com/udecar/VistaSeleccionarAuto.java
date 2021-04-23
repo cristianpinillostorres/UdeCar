@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.udecar.Datos.Automovil;
+
 import java.util.ArrayList;
 
 public class VistaSeleccionarAuto extends AppCompatActivity {
@@ -35,14 +38,14 @@ public class VistaSeleccionarAuto extends AppCompatActivity {
 
     private void llenarLista(){
         //se declaran 5 automoviles
-        arrayAutomoviles.add(new Automovil(1, "Chevrolet spark", R.drawable.automovil,
-                3.67f, "x", "", "Motor Chevrolet spark", 130.0f, 1000.0f));
+        arrayAutomoviles.add(new Automovil(1, "Chevrolet Spark", R.drawable.automovil,
+                3.67f, "x", "", "Motor Chevrolet","f"));
         arrayAutomoviles.add(new Automovil(2, "Renault Stepway ", R.drawable.automovil,
-                3.67f, "x", "", "Motor Renault Stepway", 110.0f, 1300.0f));
-        arrayAutomoviles.add(new Automovil(3, "corsa",R.drawable.automovil ,
-                3.67f, "x", "", "Motor Chevrolet corsa", 120.0f, 1200.0f));
-        arrayAutomoviles.add(new Automovil(4, "cruze",R.drawable.automovil ,
-                3.67f, "x", "", "Motor Chevrolet cruze", 140.0f, 1100.0f));
+                3.67f, "x", "", "Motor Renault","f"));
+        arrayAutomoviles.add(new Automovil(3, "Chevrolet Corsa",R.drawable.automovil ,
+                3.67f, "x", "", "Motor Chevrolet","f"));
+        arrayAutomoviles.add(new Automovil(4, "Renault Logan",R.drawable.automovil ,
+                3.67f, "x", "", "Motor Renault","f"));
 
         //arrayAutomoviles.add(new Entidad(R.drawable.img_5, "autoo" "info"));
 

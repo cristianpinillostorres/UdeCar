@@ -1,4 +1,4 @@
-package com.udecar;
+package com.udecar.Datos;
 import java.io.Serializable;
 
 public class Automovil implements Serializable{
@@ -8,11 +8,11 @@ public class Automovil implements Serializable{
     private float pesoAutomovil;
     private String descripcion;
     private String categoria;
-    private String nombreMotor ;
-    private float potenciaMotor;
-    private float cilindrajeMotor;
+    private String nombreMotor;
+    private String nombreFrenos;
 
-    public Automovil(int idAutomovil, String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor, float potenciaMotor, float cilindrajeMotor) {
+
+    public Automovil(int idAutomovil, String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor,String nombreFrenos) {
         this.idAutomovil = idAutomovil;
         this.nombreAutomovil = nombreAutomovil;
         this.imagenAutomovil = imagenAutomovil;
@@ -20,8 +20,7 @@ public class Automovil implements Serializable{
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.nombreMotor = nombreMotor;
-        this.potenciaMotor = potenciaMotor;
-        this.cilindrajeMotor = cilindrajeMotor;
+        this.nombreFrenos = nombreFrenos;
     }
 
     public int getIdAutomovil() {
@@ -80,20 +79,11 @@ public class Automovil implements Serializable{
         this.nombreMotor = nombreMotor;
     }
 
-    public float getPotenciaMotor() {
-        return potenciaMotor;
+    public String getNombreFrenos() {
+        return nombreFrenos;
     }
 
-    public void setPotenciaMotor(float potenciaMotor) {
-        this.potenciaMotor = potenciaMotor;
+    public void setNombreFrenos(String nombreFrenos) {
+        this.nombreFrenos = nombreFrenos;
     }
-
-    public float getCilindrajeMotor() {
-        return cilindrajeMotor;
-    }
-
-    public void setCilindrajeMotor(float cilindrajeMotor) {
-        this.cilindrajeMotor = cilindrajeMotor;
-    }
-
 }

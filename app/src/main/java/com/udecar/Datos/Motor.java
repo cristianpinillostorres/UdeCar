@@ -8,6 +8,10 @@ public class Motor {
     private String tipoBujia;
     private String tipoFiltro;
 
+    public Motor(){
+
+    }
+
     public Motor(int idMotor, String nombreMotor, float cilindraje, float potencia) {
         this.idMotor = idMotor;
         this.nombreMotor = nombreMotor;

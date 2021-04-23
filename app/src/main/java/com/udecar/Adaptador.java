@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.udecar.Datos.Automovil;
+
 import java.util.ArrayList;
 
 public class Adaptador extends BaseAdapter {
@@ -62,7 +64,6 @@ public class Adaptador extends BaseAdapter {
                 Intent intent = new Intent(context, VistaModificaciones.class);
                 intent.putExtra("item", automovil);
                 context.startActivity(intent);
-                System.out.println("Click !!");
             }
         });
         return convertView;

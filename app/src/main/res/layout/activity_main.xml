@@ -41,7 +41,7 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@color/colorPrimary"
             android:onClick="vistaSeleccionarAuto"
             android:text="Seleccionar Auto"
             android:textColor="@android:color/background_light"

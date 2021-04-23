@@ -9,124 +9,122 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EFF9FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:context=".VistaModificaciones">
 
-        <Button
-            android:id="@+id/btnCambiarTransmision"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="166dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:onClick="vistaModificarTransmision"
-            android:text="@string/btnTransmision"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCambiarFrenos"
-            app:layout_constraintVertical_bias="0.054" />
 
         <Button
-            android:id="@+id/btnCambiarFrenos"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:id="@+id/btn_terminar"
+            android:layout_width="139dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="152dp"
+            android:background="@color/colorPrimary"
             android:onClick="vistaModificarFrenos"
-            android:text="@string/btnFrenos"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
+            android:text="Terminar"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.952"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCambiarMotor" />
-
-        <ImageView
-            android:id="@+id/img_imagenAuto"
-            android:layout_width="153dp"
-            android:layout_height="143dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/automovil"
-            app:layout_constraintBottom_toTopOf="@+id/btnCambiarMotor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.313"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_modificarFrenos" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Modificar automovil"
+            android:layout_marginTop="10dp"
+            android:text="Modificacion de automovil"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textColor="#000000"
-            android:textSize="36sp"
+            android:textColor="#15424F"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintHorizontal_bias="0.245"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="385dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <TextView
+                android:id="@+id/tv_nombreAuto"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="4dp"
+                android:textAlignment="viewStart"
+                android:textColor="#15424F"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/img_imagenAuto"
+                android:layout_width="180dp"
+                android:layout_height="158dp"
+                android:layout_below="@+id/tv_nombreAuto"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="11dp"
+                android:src="@drawable/automovil"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_infoAuto"
+                android:layout_width="173dp"
+                android:layout_height="161dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="11dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
 
         <Button
-            android:id="@+id/btnCambiarMotor"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="244dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:id="@+id/btn_modificarMotor"
+            android:layout_width="187dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
             android:onClick="vistaModificarMotor"
             android:text="@string/btnMotor"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/tv_infoAuto"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
-            android:layout_marginEnd="16dp"
-            android:textColor="@android:color/background_dark"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_nombreAuto"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="16dp"
-            android:textColor="@android:color/background_dark"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
         <Button
-            android:id="@+id/btnTerminarModificacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#4AA2E8"
-            android:text="@string/btnTerminarModificacion"
-            tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="539dp" />
+            android:id="@+id/btn_modificarFrenos"
+            android:layout_width="187dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:onClick="vistaModificarFrenos"
+            android:text="@string/btnFrenos"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_modificarMotor"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
