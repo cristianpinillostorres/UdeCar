@@ -31,13 +31,14 @@
         android:id="@+id/textView2"
         android:layout_width="163dp"
         android:layout_height="28dp"
-        android:layout_marginTop="52dp"
-        android:text="Discos de frenos"
+        android:layout_marginTop="76dp"
+        android:text="Tipos de frenos"
         android:textAlignment="center"
         android:textColor="#0C0C0C"
         android:textIsSelectable="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -45,35 +46,35 @@
         android:id="@+id/textView6"
         android:layout_width="78dp"
         android:layout_height="26dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="36dp"
         android:text="Pinzas "
         android:textAlignment="center"
         android:textColor="#050505"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="153dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="60dp"
-        android:text="Discos Ventilados"
-        android:textColor="#101010"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Spinner
         android:id="@+id/sp_Pistones"
-        android:layout_width="369dp"
+        android:layout_width="186dp"
         android:layout_height="34dp"
+        android:layout_marginTop="24dp"
         android:prompt="@string/seleccionBujia"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="607dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/sp_TiposFrenos"
         tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/sp_TiposFrenos"
+        android:layout_width="194dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:prompt="@string/seleccionBujia"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
