@@ -6,6 +6,8 @@
     <string name="btnTransmision">Modificar Transmision</string>
     <string name="seleccionBujia">Seleccione una bujia a modificar</string>
     <string name="btnTerminarModificacion">Terminar</string>
+    <string name="btnGuardarModificacion">Guardar</string>
+    <string name="btnGuardarBujias">Guardar</string>
 
 
 </resources>
