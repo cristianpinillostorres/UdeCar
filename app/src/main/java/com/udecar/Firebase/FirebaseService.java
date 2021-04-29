@@ -10,8 +10,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.udecar.Datos.Automovil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FirebaseService {
@@ -126,16 +128,29 @@ public class FirebaseService {
         db.collection("automovil").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                String data = "";
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot documento : task.getResult()) {
-                        documento.getId();
-                        documento.getData();
+                        Automovil automovil = documento.toObject(Automovil.class);
+                        automovil.setNombreAutomovil(documento.getId());
+                        String nombreAuto = automovil.getNombreAutomovil();
+                        float pesoAutomovil = automovil.getPesoAutomovil();
+                        String descripcion = automovil.getDescripcion();
+                        String categoria = automovil.getCategoria();
+                        String nombreMotor = automovil.getNombreMotor();
+                        String nombreFrenos = automovil.getNombreFrenos();
+
+                        data += "\nNombre modelo: " + nombreAuto
+                                + "\nPeso: " + pesoAutomovil + "\nDescripción: " + descripcion
+                                + "\nCategoría: " + categoria + "\nMotor: " + nombreMotor
+                                + "\nFrenos: " + nombreFrenos + "\n\n";
                     }
                 }else{
                     task.getException();
                 }
             }
         });
+
     }
 
     // <-------------------------------------------------------------------------------------->
