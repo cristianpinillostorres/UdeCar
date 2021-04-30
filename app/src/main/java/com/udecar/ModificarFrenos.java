@@ -21,10 +21,8 @@ import java.util.ArrayList;
 
 public class ModificarFrenos extends AppCompatActivity {
 
-    Spinner spLista, spLista2;
-    EditText tiposDeFreno;
-    EditText pinzas;
-    Button btn_guardarModFrenos;
+    private Spinner spLista, spLista2;
+    private Button btn_guardarModFrenos;
 
     private DatabaseReference mDatabase;
 
@@ -36,11 +34,9 @@ public class ModificarFrenos extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference("GuardarDatosModificados");
 
-        spLista =(Spinner) findViewById(R.id.sp_pistones);
-        spLista2 = (Spinner) findViewById(R.id.sp_tiposFrenos);
-        tiposDeFreno = (EditText) findViewById(R.id.tipo_Freno);
-        pinzas = (EditText) findViewById (R.id.twFiltro);
-        btn_guardarModFrenos = (Button) findViewById(R.id.btn_guardarModFrenos);
+        spLista = findViewById(R.id.sp_pistones);
+        spLista2 = findViewById(R.id.sp_tiposFrenos);
+        btn_guardarModFrenos = findViewById(R.id.btn_guardarModFrenos);
 
         LlenarSpiner();
         LlenarSpinerDiscos();
@@ -121,10 +117,4 @@ public class ModificarFrenos extends AppCompatActivity {
         });
     }
 
-    public void ObtenerSeleccion(){
-        PartesFrenos parteSeleccionada = (PartesFrenos) spLista.getSelectedItem();
-        PartesFrenos parteSeleccionada2 = (PartesFrenos) spLista2.getSelectedItem();
-        String mensaje = parteSeleccionada.getNombreParte()+" ha sido seleccionada";
-        Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_SHORT).show();
-    }
 }
