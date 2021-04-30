@@ -23,6 +23,7 @@ public class VistaModificaciones extends AppCompatActivity {
 
         //trae la informacion del item seleccionado
         auto = (Automovil) getIntent().getSerializableExtra("item");
+
         if (auto != null) {
             tv_NombreAuto = findViewById(R.id.tv_nombreAuto);
             tv_InfoAuto = findViewById(R.id.tv_infoAuto);
@@ -30,7 +31,7 @@ public class VistaModificaciones extends AppCompatActivity {
 
             // LLENAMOS LOS ELEMENTOS CON LOS VALORES DE CADA ITEM
             String informacion = "Nombre: " + auto.getNombreAutomovil() + "\n" +
-                                 "Descripcion: " + String.valueOf(auto.getDescripcion()) + "\n";
+                                 "Descripcion: " + auto.getDescripcion() + "\n";
 
             //imgFoto.setImageResource(auto.getImagenAutomovil());
             tv_NombreAuto.setText(auto.getNombreAutomovil());

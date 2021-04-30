@@ -10,6 +10,9 @@ public class Automovil implements Serializable{
     private String nombreMotor;
     private String nombreFrenos;
 
+    public Automovil(){
+
+    }
 
     public Automovil( String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor,String nombreFrenos) {
         this.nombreAutomovil = nombreAutomovil;
