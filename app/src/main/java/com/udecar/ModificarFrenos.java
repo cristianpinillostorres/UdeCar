@@ -32,8 +32,6 @@ public class ModificarFrenos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_frenos);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("GuardarDatosModificados");
-
         spLista = findViewById(R.id.sp_pistones);
         spLista2 = findViewById(R.id.sp_tiposFrenos);
         btn_guardarModFrenos = findViewById(R.id.btn_guardarModFrenos);
