@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.udecar.Datos.Automovil;
+import com.udecar.Firebase.FirebaseService;
 
 import java.util.ArrayList;
 
@@ -37,19 +38,20 @@ public class VistaSeleccionarAuto extends AppCompatActivity {
     }
 
     private void llenarLista(){
-        //se declaran 5 automoviles
-        arrayAutomoviles.add(new Automovil(1, "Chevrolet Spark", R.drawable.automovil,
-                3.67f, "x", "", "Motor Chevrolet","f"));
-        arrayAutomoviles.add(new Automovil(2, "Renault Stepway ", R.drawable.automovil,
-                3.67f, "x", "", "Motor Renault","f"));
-        arrayAutomoviles.add(new Automovil(3, "Chevrolet Corsa",R.drawable.automovil ,
-                3.67f, "x", "", "Motor Chevrolet","f"));
-        arrayAutomoviles.add(new Automovil(4, "Renault Logan",R.drawable.automovil ,
-                3.67f, "x", "", "Motor Renault","f"));
 
+        FirebaseService catalogo = new FirebaseService();
+        catalogo.obtenerAutos();
+        while(!catalogo.isBanderaAutos()){
+            if (catalogo.isBanderaAutos()){
+                arrayAutomoviles.addAll(catalogo.getListaAutos());
+                adaptador = new Adaptador(this, arrayAutomoviles);
+                lv_Autos.setAdapter(adaptador);
+            }
+        }
+
+        //arrayAutomoviles.addAll(catalogo.obtenerAutos());
         //arrayAutomoviles.add(new Entidad(R.drawable.img_5, "autoo" "info"));
 
-        adaptador = new Adaptador(this, arrayAutomoviles);
-        lv_Autos.setAdapter(adaptador);
+
     }
 }

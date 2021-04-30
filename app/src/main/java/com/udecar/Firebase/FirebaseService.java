@@ -12,6 +12,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.udecar.Datos.Automovil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,13 @@ public class FirebaseService {
     private static  String email = "", nombre = "", password = "";
 
     //Variable booleana para controlar que se cumpla o no una tarea;
-    private static boolean completado = false ;
+    private boolean completado = false ;
 
+    //Array para enviar el listado de autos al catálogo TEMPORALMENTE
+    private ArrayList<Automovil> listaAutos;
+
+    //Bandera de catálogo
+    private boolean banderaAutos = false;
 
     //Prueba de nuevo usuario, NO ESTÁ DEFINIDO
     private void nuevoUsuario(String email,String password,String nombre){
@@ -125,32 +131,24 @@ public class FirebaseService {
     // <------------------------------ Obtener listado de autos ------------------------------>
 
     public void obtenerAutos (){
+
+        listaAutos = new ArrayList<>();
+        banderaAutos = false;
         db.collection("automovil").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                String data = "";
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot documento : task.getResult()) {
                         Automovil automovil = documento.toObject(Automovil.class);
-                        automovil.setNombreAutomovil(documento.getId());
-                        String nombreAuto = automovil.getNombreAutomovil();
-                        float pesoAutomovil = automovil.getPesoAutomovil();
-                        String descripcion = automovil.getDescripcion();
-                        String categoria = automovil.getCategoria();
-                        String nombreMotor = automovil.getNombreMotor();
-                        String nombreFrenos = automovil.getNombreFrenos();
-
-                        data += "\nNombre modelo: " + nombreAuto
-                                + "\nPeso: " + pesoAutomovil + "\nDescripción: " + descripcion
-                                + "\nCategoría: " + categoria + "\nMotor: " + nombreMotor
-                                + "\nFrenos: " + nombreFrenos + "\n\n";
+                        listaAutos.add(automovil);
                     }
+                    banderaAutos = true;
                 }else{
                     task.getException();
                 }
             }
         });
-
+        //System.out.println("Motor: "+listaAutos.get(0).getNombreMotor());
     }
 
     // <-------------------------------------------------------------------------------------->
@@ -188,11 +186,27 @@ public class FirebaseService {
         FirebaseService.password = password;
     }
 
-    public static boolean isCompletado() {
+    public boolean isCompletado() {
         return completado;
     }
 
-    public static void setCompletado(boolean completado) {
-        FirebaseService.completado = completado;
+    public void setCompletado(boolean completado) {
+        this.completado = completado;
+    }
+
+    public ArrayList<Automovil> getListaAutos() {
+        return listaAutos;
+    }
+
+    public void setListaAutos(ArrayList<Automovil> listaAutos) {
+        this.listaAutos = listaAutos;
+    }
+
+    public boolean isBanderaAutos() {
+        return banderaAutos;
+    }
+
+    public void setBanderaAutos(boolean banderaAutos) {
+        this.banderaAutos = banderaAutos;
     }
 }
