@@ -55,6 +55,7 @@ public class ModificarFrenos extends AppCompatActivity {
         if (!TextUtils.isEmpty(pinza)){
             String id = mDatabase.push().getKey();
             Toast.makeText(this, "Datos guardados", Toast.LENGTH_LONG).show();
+
         }
     }
 
