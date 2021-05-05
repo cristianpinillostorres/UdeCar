@@ -16,6 +16,7 @@ import com.udecar.Datos.Automovil;
 import java.util.ArrayList;
 
 public class Adaptador extends BaseAdapter {
+
     private ArrayList<Automovil> listaAutos;
     private Context context;
     private LayoutInflater inflater;
@@ -54,7 +55,7 @@ public class Adaptador extends BaseAdapter {
                 "Descripcion: "+String.valueOf(automovil.getDescripcion())+"\n" +
                 "Peso: "+String.valueOf(automovil.getPesoAutomovil())+"\n";
 
-        img_Auto.setImageResource(automovil.getImagenAutomovil());
+        //img_Auto.setImageResource(automovil.getImagenAutomovil());
         tv_NombreAuto.setText(automovil.getNombreAutomovil());
         tv_InfoAuto.setText(informacion);
 

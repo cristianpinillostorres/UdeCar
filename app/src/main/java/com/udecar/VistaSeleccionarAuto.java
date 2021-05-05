@@ -1,13 +1,20 @@
 package com.udecar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.udecar.Datos.Automovil;
 
 import java.util.ArrayList;
@@ -16,16 +23,19 @@ public class VistaSeleccionarAuto extends AppCompatActivity {
 
     private ListView lv_Autos;
     private Adaptador adaptador;
-    private ArrayList<Automovil> arrayAutomoviles = new ArrayList<>();
+    private ArrayList<Automovil> listaAutomoviles = new ArrayList<>();
+    private FirebaseFirestore miFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_seleccionar_auto);
 
-        lv_Autos = (ListView) findViewById(R.id.lv_Autos);
+        miFirestore = FirebaseFirestore.getInstance();
 
-        llenarLista();
+        lv_Autos = findViewById(R.id.lv_Autos);
+
+        listarDatos();
 
         lv_Autos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -36,20 +46,23 @@ public class VistaSeleccionarAuto extends AppCompatActivity {
         });
     }
 
-    private void llenarLista(){
-        //se declaran 5 automoviles
-        arrayAutomoviles.add(new Automovil(1, "Chevrolet Spark", R.drawable.automovil,
-                3.67f, "x", "", "Motor Chevrolet","f"));
-        arrayAutomoviles.add(new Automovil(2, "Renault Stepway ", R.drawable.automovil,
-                3.67f, "x", "", "Motor Renault","f"));
-        arrayAutomoviles.add(new Automovil(3, "Chevrolet Corsa",R.drawable.automovil ,
-                3.67f, "x", "", "Motor Chevrolet","f"));
-        arrayAutomoviles.add(new Automovil(4, "Renault Logan",R.drawable.automovil ,
-                3.67f, "x", "", "Motor Renault","f"));
+    private void listarDatos() {
+        miFirestore.collection("automovil").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot documento : task.getResult()) {
+                        Automovil autos = documento.toObject(Automovil.class);
+                        listaAutomoviles.add(autos);
+                    }
+                    adaptador = new Adaptador(VistaSeleccionarAuto.this, listaAutomoviles);
+                    lv_Autos.setAdapter(adaptador);
 
-        //arrayAutomoviles.add(new Entidad(R.drawable.img_5, "autoo" "info"));
+                } else {
+                    Log.d("ListarAutos", "Error obteniendo los documentos: ", task.getException());
+                }
+            }
+        });
 
-        adaptador = new Adaptador(this, arrayAutomoviles);
-        lv_Autos.setAdapter(adaptador);
     }
 }

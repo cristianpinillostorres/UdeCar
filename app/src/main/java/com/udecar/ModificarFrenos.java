@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.udecar.Datos.PartesFrenos;
-import com.udecar.Firebase.FirebaseService;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class ModificarFrenos extends AppCompatActivity {
     EditText pinzas;
     Button btn_guardarModFrenos;
 
-private DatabaseReference Datos;
+    private DatabaseReference mDatabase;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -35,7 +34,7 @@ private DatabaseReference Datos;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_frenos);
 
-Datos = FirebaseDatabase.getInstance().getReference("FirebaseService");
+        mDatabase = FirebaseDatabase.getInstance().getReference("GuardarDatosModificados");
 
         spLista =(Spinner) findViewById(R.id.sp_pistones);
         spLista2 = (Spinner) findViewById(R.id.sp_tiposFrenos);
@@ -47,18 +46,17 @@ Datos = FirebaseDatabase.getInstance().getReference("FirebaseService");
         LlenarSpinerDiscos();
     }
 
-    public void guardarDatos(){
-        String freno = spLista2.getSelectedItem().toString();
-        String pinza = spLista.getSelectedItem().toString();
+    public void registrarModificaciones (){
 
-        String id = Datos.push().getKey();
-        FirebaseService modificaciones = new FirebaseService(id, freno, pinza);
-        Datos.child("Modificacion").child(id).setValue(modificaciones);
+        String pinza= spLista.getSelectedItem().toString();
+        String tipoFreno = spLista2.getSelectedItem().toString();
+        //String porcentaje = .getSelectedItem().toString();
 
-        Toast.makeText(this, "Dato modificado", Toast.LENGTH_LONG).show();
+        if (!TextUtils.isEmpty(pinza)){
+            String id = mDatabase.push().getKey();
+            Toast.makeText(this, "Datos guardados", Toast.LENGTH_LONG).show(id, pinza, tipoFreno);
+        }
     }
-
-
 
     public void LlenarSpiner(){
 
