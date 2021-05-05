@@ -15,6 +15,30 @@ import java.util.Map;
 
 public class FirebaseService {
 
+    String id;
+    String tipoFreno;
+    String pinzas;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTipoFreno() {
+        return tipoFreno;
+    }
+
+    public String getPinzas() {
+        return pinzas;
+    }
+
+    public FirebaseService(String id, String tipoFreno, String pinzas) {
+        this.id = id;
+        this.tipoFreno = tipoFreno;
+        this.pinzas = pinzas;
+    }
+
+
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static  String email = "", nombre = "", password = "";
 

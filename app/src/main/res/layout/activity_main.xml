@@ -23,24 +23,23 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="52dp"
             android:text="UdeCar "
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#000000"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
-
 
         <Button
             android:id="@+id/btnCambiarMotor"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="92dp"
             android:backgroundTint="@color/colorPrimary"
             android:onClick="vistaSeleccionarAuto"
             android:text="Seleccionar Auto"
@@ -50,6 +49,38 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <Button
+            android:id="@+id/botonRegistrarUsuario"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="vistaRegistroUsuario"
+            android:text="@string/btnRegistrar"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCambiarMotor" />
+
+        <Button
+            android:id="@+id/btnIniciarSesion"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="iniciarSesion"
+            android:text="@string/btnIniciarSesion"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/botonRegistrarUsuario" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

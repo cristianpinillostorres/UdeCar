@@ -26,19 +26,12 @@ public class ModificarMotor extends AppCompatActivity {
     private Motor motor = new Motor();
     private Automovil auto;
 
-    EditText bujias;
-    EditText filtroAire;
-    EditText altasBujias;
-    EditText potencia;
-    Spinner listBujias;
-    Spinner listFiltro;
-    Spinner getListBujias;
-    Button btnGuardar;
+
 
     private DatabaseReference mDatabase;
 
-    //private Spinner listaBujias;
-  //  private Spinner listaFiltros;
+    private Spinner listaBujias;
+   private Spinner listaFiltros;
     private TextView labelInfo;
     private TextView labelNombre;
     private TextView labelRendimientoModificado;
@@ -51,7 +44,7 @@ public class ModificarMotor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-     mDatabase = FirebaseDatabase.getInstance().getReference("GuardarDatosModificados");
+
         //bujias = (EditText) findViewById(R.id.bujia);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_motor);
@@ -59,17 +52,15 @@ public class ModificarMotor extends AppCompatActivity {
         auto = (Automovil) getIntent().getSerializableExtra("item");
 
         //inicializar componentes
-        listBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
-        listFiltro = (Spinner) findViewById(R.id.ddl_listaFiltros);
-        bujias = (EditText) findViewById(R.id.twBujias);
-        filtroAire = (EditText) findViewById(R.id.twFiltro);
-        altasBujias = (EditText) findViewById(R.id.twBujias);
+        listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
+        listaFiltros = (Spinner) findViewById(R.id.ddl_listaFiltros);
+
 
        // labelPorcentaje = findViewById(R.id.tv_porcentajeRendimiento);
        // labelRendimientoModificado = findViewById(R.id.tv_rendimientoModificado);
        // labelNombre = findViewById(R.id.tv_nombreMotor);
         labelInfo = findViewById(R.id.infoMotor);
-        btnGuardar = (Button) findViewById(R.id.bt_guardar);
+
 
         //motor de prueba
         arrayMotores.add(new Motor(1,"Motor Renault",1598 ,110));
@@ -99,18 +90,7 @@ public class ModificarMotor extends AppCompatActivity {
 
     }
 
-    public void registrarClase (){
-        String bujias = listBujias.getSelectedItem().toString();
-        String filtroAire = listFiltro.getSelectedItem().toString();
-        //String porcentaje = .getSelectedItem().toString();
 
-        if (!TextUtils.isEmpty(bujias)){
-            String id = mDatabase.push().getKey();
-            GuardarDatosModificados AutosModificados = new GuardarDatosModificados(id, bujias, filtroAire);
-            Toast.makeText(this, "Datos guardados", Toast.LENGTH_LONG).show();
-        }
-
-    }
 
     public void LlenarSpinerBujias(){
         PartesMotor parte1 = new PartesMotor(1, 1,"U-GROOVE K20PR-U11");                //Ejemplo, mejora 6%
@@ -128,14 +108,14 @@ public class ModificarMotor extends AppCompatActivity {
         bujias.add(parte5.getNombreParte());
         //adaptador de tipo arrayList para el spinner que muestra las bujias
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, bujias);
-        listBujias.setAdapter(adaptador);
+        listaBujias.setAdapter(adaptador);
 
         //Evento Spiner
-        listBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listaBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch(listBujias.getSelectedItem().toString()){
+                switch(listaBujias.getSelectedItem().toString()){
                     case "U-GROOVE K20PR-U11":
                         motor.setPotencia((float) (potenciaMotor+( potenciaMotor*0.06)));
                         labelPorcentaje.setText(" -  Aumenta 6%");
@@ -181,10 +161,10 @@ public class ModificarMotor extends AppCompatActivity {
         filtros.add(parte8.getNombreParte());
         //adaptador de tipo arrayList para el spinner que muestra las bujias
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, filtros);
-        listFiltro.setAdapter(adaptador);
+        listaFiltros.setAdapter(adaptador);
 
         //Evento Spiner
-        listBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listaBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             }

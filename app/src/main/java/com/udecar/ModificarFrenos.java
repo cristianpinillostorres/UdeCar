@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.udecar.Datos.PartesFrenos;
+import com.udecar.Firebase.FirebaseService;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class ModificarFrenos extends AppCompatActivity {
     EditText pinzas;
     Button btn_guardarModFrenos;
 
-    private DatabaseReference mDatabase;
+private DatabaseReference Datos;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -34,7 +35,7 @@ public class ModificarFrenos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_frenos);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("GuardarDatosModificados");
+Datos = FirebaseDatabase.getInstance().getReference("FirebaseService");
 
         spLista =(Spinner) findViewById(R.id.sp_pistones);
         spLista2 = (Spinner) findViewById(R.id.sp_tiposFrenos);
@@ -46,17 +47,18 @@ public class ModificarFrenos extends AppCompatActivity {
         LlenarSpinerDiscos();
     }
 
-    public void registrarModificaciones (){
+    public void guardarDatos(){
+        String freno = spLista2.getSelectedItem().toString();
+        String pinza = spLista.getSelectedItem().toString();
 
-        String pinza= spLista.getSelectedItem().toString();
-        String tipoFreno = spLista2.getSelectedItem().toString();
-        //String porcentaje = .getSelectedItem().toString();
+        String id = Datos.push().getKey();
+        FirebaseService modificaciones = new FirebaseService(id, freno, pinza);
+        Datos.child("Modificacion").child(id).setValue(modificaciones);
 
-        if (!TextUtils.isEmpty(pinza)){
-            String id = mDatabase.push().getKey();
-            Toast.makeText(this, "Datos guardados", Toast.LENGTH_LONG).show(id, pinza, tipoFreno);
-        }
+        Toast.makeText(this, "Dato modificado", Toast.LENGTH_LONG).show();
     }
+
+
 
     public void LlenarSpiner(){
 

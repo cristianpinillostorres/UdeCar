@@ -8,6 +8,15 @@
     <string name="btnTerminarModificacion">Terminar</string>
     <string name="btnGuardarModificacion">Guardar</string>
     <string name="btnGuardarBujias">Guardar</string>
+    <string name="email">Ingrese un correo electronico</string>
+    <string name="nombre">Ingrese un nombre</string>
+    <string name="contraseña">Ingrese una contraseña</string>
+    <string name="btnRegistrar">Registrar</string>
+    <string name="btnRegistrarUsuario">Registrar Usuario</string>
+    <string name="btnIngresar">Iniciar Sesion</string>
+    <string name="TextEmail">Ingrese su correo</string>
+    <string name="TextContraseña">Ingrese su contraseña</string>
+    <string name="btnIniciarSesion">Iniciar Sesion</string>
 
 
 </resources>

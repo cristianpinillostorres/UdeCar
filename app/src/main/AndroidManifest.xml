@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VistaSeleccionarAuto"></activity>
+        <activity android:name=".RecuperarContra"></activity>
+        <activity android:name=".PrincipalUsuario" />
+        <activity android:name=".Login" />
+        <activity android:name=".Registro" />
+        <activity android:name=".VistaSeleccionarAuto" />
         <activity android:name=".VistaModificaciones" />
         <activity android:name=".ModificarFrenos" />
         <activity android:name=".ModificarMotor" />
