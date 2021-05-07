@@ -10,7 +10,6 @@ public class Motor implements Serializable {
     private String tipoFiltro;
 
     public Motor(){
-
     }
 
     public Motor(String nombreMotor, long cilindraje, long potencia, String tipoBujia, String tipoFiltro) {
