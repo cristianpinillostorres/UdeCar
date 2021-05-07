@@ -2,13 +2,13 @@ package com.udecar.Datos;
 import java.io.Serializable;
 
 public class Automovil implements Serializable{
-    private String nombreAutomovil;
-    private int imagenAutomovil;//cambiar para usar BD
-    private float pesoAutomovil;
-    private String descripcion;
     private String categoria;
-    private String nombreMotor;
+    private String descripcion;
+    private int imagenAutomovil;//cambiar para usar BD
+    private String nombreAutomovil;
     private String nombreFrenos;
+    private String nombreMotor;
+    private long pesoAutomovil;
 
     public Automovil(){
 
@@ -17,7 +17,7 @@ public class Automovil implements Serializable{
     public Automovil( String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor,String nombreFrenos) {
         this.nombreAutomovil = nombreAutomovil;
         this.imagenAutomovil = imagenAutomovil;
-        this.pesoAutomovil = pesoAutomovil;
+        this.pesoAutomovil = (long) pesoAutomovil;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.nombreMotor = nombreMotor;
@@ -44,7 +44,7 @@ public class Automovil implements Serializable{
         return pesoAutomovil;
     }
 
-    public void setPesoAutomovil(float pesoAutomovil) {
+    public void setPesoAutomovil(long pesoAutomovil) {
         this.pesoAutomovil = pesoAutomovil;
     }
 
@@ -79,4 +79,6 @@ public class Automovil implements Serializable{
     public void setNombreFrenos(String nombreFrenos) {
         this.nombreFrenos = nombreFrenos;
     }
+
+
 }

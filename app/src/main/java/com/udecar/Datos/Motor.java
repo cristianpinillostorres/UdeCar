@@ -1,10 +1,11 @@
 package com.udecar.Datos;
 
-public class Motor {
-    private int idMotor;
+import java.io.Serializable;
+
+public class Motor implements Serializable {
     private String nombreMotor;
-    private float cilindraje;
-    private float potencia;
+    private long cilindraje;
+    private long potencia;
     private String tipoBujia;
     private String tipoFiltro;
 
@@ -12,19 +13,12 @@ public class Motor {
 
     }
 
-    public Motor(int idMotor, String nombreMotor, float cilindraje, float potencia) {
-        this.idMotor = idMotor;
+    public Motor(String nombreMotor, long cilindraje, long potencia, String tipoBujia, String tipoFiltro) {
         this.nombreMotor = nombreMotor;
         this.cilindraje = cilindraje;
         this.potencia = potencia;
-    }
-
-    public int getIdMotor() {
-        return idMotor;
-    }
-
-    public void setIdMotor(int idMotor) {
-        this.idMotor = idMotor;
+        this.tipoBujia = tipoBujia;
+        this.tipoFiltro = tipoFiltro;
     }
 
     public String getNombreMotor() {
@@ -39,7 +33,7 @@ public class Motor {
         return cilindraje;
     }
 
-    public void setCilindraje(float cilindraje) {
+    public void setCilindraje(long cilindraje) {
         this.cilindraje = cilindraje;
     }
 
@@ -47,7 +41,7 @@ public class Motor {
         return potencia;
     }
 
-    public void setPotencia(float potencia) {
+    public void setPotencia(long potencia) {
         this.potencia = potencia;
     }
 
@@ -66,4 +60,6 @@ public class Motor {
     public void setTipoFiltro(String tipoFiltro) {
         this.tipoFiltro = tipoFiltro;
     }
+
+
 }

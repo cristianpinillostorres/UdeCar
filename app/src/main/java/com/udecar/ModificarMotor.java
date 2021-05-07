@@ -23,74 +23,47 @@ import com.udecar.Datos.PartesMotor;
 import java.util.ArrayList;
 
 public class ModificarMotor extends AppCompatActivity {
-    private Motor motor = new Motor();
-    private Automovil auto;
-
-
-
-    private DatabaseReference mDatabase;
+    private Motor motor;
 
     private Spinner listaBujias;
-   private Spinner listaFiltros;
+    private Spinner listaFiltros;
     private TextView labelInfo;
     private TextView labelNombre;
     private TextView labelRendimientoModificado;
     private TextView labelPorcentaje;
 
-    private ArrayList<Motor> arrayMotores = new ArrayList<>();
     private float potenciaMotor = 0;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-        //bujias = (EditText) findViewById(R.id.bujia);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_motor);
 
-        auto = (Automovil) getIntent().getSerializableExtra("item");
-
+        //llamado de clase del activity anterior
+        motor = (Motor) getIntent().getSerializableExtra("itemMotor");
         //inicializar componentes
         listaBujias = (Spinner) findViewById(R.id.ddl_listaBujias);
         listaFiltros = (Spinner) findViewById(R.id.ddl_listaFiltros);
-
-
-       // labelPorcentaje = findViewById(R.id.tv_porcentajeRendimiento);
-       // labelRendimientoModificado = findViewById(R.id.tv_rendimientoModificado);
-       // labelNombre = findViewById(R.id.tv_nombreMotor);
+        labelPorcentaje = findViewById(R.id.tv_porcentajeRendimiento);
+        labelRendimientoModificado = findViewById(R.id.tv_rendimientoModificado);
+        labelNombre = findViewById(R.id.tv_nombreMotor);
         labelInfo = findViewById(R.id.infoMotor);
 
-
-        //motor de prueba
-        arrayMotores.add(new Motor(1,"Motor Renault",1598 ,110));
-        arrayMotores.add(new Motor(2,"Motor Chevrolet",1679 ,120));
-        //valida que sea el mismo motor
-        String nombre = "a" ;
-        String informacion = "a";
-        for (int i=0;i<arrayMotores.size();i++) {
-            if (auto.getNombreMotor().equals(arrayMotores.get(i).getNombreMotor())) {
-                motor.setIdMotor(arrayMotores.get(i).getIdMotor());
-                motor.setNombreMotor(arrayMotores.get(i).getNombreMotor());
-                motor.setCilindraje(arrayMotores.get(i).getCilindraje());
-                motor.setPotencia(potenciaMotor = arrayMotores.get(i).getPotencia());
-
-                nombre = arrayMotores.get(i).getNombreMotor();
-                informacion =  "Cilindraje: " + arrayMotores.get(i).getCilindraje() + "\n" +
-                                "Potencia: " + arrayMotores.get(i).getPotencia() + "\n" +
-                                "Bujias: " + arrayMotores.get(i).getTipoBujia() + "\n" +
-                                "Filtros: " + arrayMotores.get(i).getTipoFiltro()+ "\n";
-            }
-        }
+        String nombre = motor.getNombreMotor();
+        String informacion =  "Cilindraje: " + motor.getCilindraje() + "\n" +
+                              "Potencia: " + motor.getPotencia() + "\n" +
+                              "Bujias: " + motor.getTipoBujia() + "\n" +
+                              "Filtros: " + motor.getTipoFiltro()+ "\n";
+        potenciaMotor = motor.getPotencia();
         labelNombre.setText(nombre);
         labelInfo.setText(informacion);
+        labelRendimientoModificado.setText(""+motor.getPotencia());
          //Llenar Spinner
         LlenarSpinerBujias();
         LlenarSpinerFiltros();
 
     }
-
-
 
     public void LlenarSpinerBujias(){
         PartesMotor parte1 = new PartesMotor(1, 1,"U-GROOVE K20PR-U11");                //Ejemplo, mejora 6%
@@ -107,33 +80,32 @@ public class ModificarMotor extends AppCompatActivity {
         bujias.add(parte4.getNombreParte());
         bujias.add(parte5.getNombreParte());
         //adaptador de tipo arrayList para el spinner que muestra las bujias
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, bujias);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(ModificarMotor.this, R.layout.support_simple_spinner_dropdown_item, bujias);
         listaBujias.setAdapter(adaptador);
 
         //Evento Spiner
         listaBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 switch(listaBujias.getSelectedItem().toString()){
                     case "U-GROOVE K20PR-U11":
-                        motor.setPotencia((float) (potenciaMotor+( potenciaMotor*0.06)));
+                        motor.setPotencia((long) (potenciaMotor+( potenciaMotor*0.06)));
                         labelPorcentaje.setText(" -  Aumenta 6%");
                         break;
                     case "PLATINUM TT PK20TT":
-                        motor.setPotencia((float) (potenciaMotor+( potenciaMotor*0.04)));
+                        motor.setPotencia((long) (potenciaMotor+( potenciaMotor*0.04)));
                         labelPorcentaje.setText(" -  Aumenta 4%");
                         break;
                     case "DOUBLE PLATINUM PK20PR11":
-                        motor.setPotencia((float) (potenciaMotor+( potenciaMotor*0.055)));
+                        motor.setPotencia((long) (potenciaMotor+( potenciaMotor*0.055)));
                         labelPorcentaje.setText(" -  Aumenta 5.5%");
                         break;
                     case "IRIDIUM LONG LIFE SK20PR-L11":
-                        motor.setPotencia((float) (potenciaMotor+( potenciaMotor*0.023)));
+                        motor.setPotencia((long) (potenciaMotor+( potenciaMotor*0.023)));
                         labelPorcentaje.setText(" -  Aumenta 2.3%");
                         break;
                     case "IRIDIUM POWER IK20":
-                        motor.setPotencia((float) (potenciaMotor+( potenciaMotor*0.045)));
+                        motor.setPotencia((long) (potenciaMotor+( potenciaMotor*0.045)));
                         labelPorcentaje.setText(" -  Aumenta en 4.5%");
                         break;
                     default:
@@ -146,7 +118,6 @@ public class ModificarMotor extends AppCompatActivity {
             }
         });
     }
-
     public void LlenarSpinerFiltros(){
         //Partes de tipo Filtros de prueba
         PartesMotor parte6 = new PartesMotor(6, 2,"U-GROOVE K20PR-U11");
