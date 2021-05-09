@@ -1,5 +1,6 @@
 package com.udecar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,9 +15,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.udecar.Datos.Automovil;
+import com.udecar.Datos.Bujia;
 import com.udecar.Datos.Motor;
 import com.udecar.Datos.PartesMotor;
 
@@ -34,12 +39,17 @@ public class ModificarMotor extends AppCompatActivity {
 
     private float potenciaMotor = 0;
 
+    private DatabaseReference dataBase;
+
+    private ArrayList<String> bujias = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_motor);
 
+        dataBase = FirebaseDatabase.getInstance().getReference();
         //llamado de clase del activity anterior
         motor = (Motor) getIntent().getSerializableExtra("itemMotor");
         //inicializar componentes
@@ -66,13 +76,37 @@ public class ModificarMotor extends AppCompatActivity {
     }
 
     public void LlenarSpinerBujias(){
-        PartesMotor parte1 = new PartesMotor(1, 1,"U-GROOVE K20PR-U11");                //Ejemplo, mejora 6%
+
+
+        /*PartesMotor parte1 = new PartesMotor(1, 1,"U-GROOVE K20PR-U11");                //Ejemplo, mejora 6%
         PartesMotor parte2 = new PartesMotor(2, 1,"PLATINUM TT PK20TT");                //Mejora 4%
         PartesMotor parte3 = new PartesMotor(3, 1,"DOUBLE PLATINUM PK20PR11");          //Mejora 5.5%
         PartesMotor parte4 = new PartesMotor(4, 1,"IRIDIUM LONG LIFE SK20PR-L11");      //Mejora 2.3%
         PartesMotor parte5 = new PartesMotor(5, 1,"IRIDIUM POWER IK20");                //Mejora 4.5%
         //Creacion del arrayList de tipo "PartesMotor"
-        ArrayList<String> bujias = new ArrayList<>();
+
+         */
+        dataBase.child("Bujia").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    for(DataSnapshot bujia : snapshot.getChildren()){
+                        Bujia bujiaSpinner = new Bujia();
+                        bujiaSpinner.setNombreBujia(bujia.getKey());
+                        bujiaSpinner.setPotencia(Float.parseFloat(bujia.child("potencia").getValue().toString()));
+                        bujias.add(bujiaSpinner.getNombreBujia());
+                    }
+                    ArrayAdapter<String> adaptador = new ArrayAdapter<>(ModificarMotor.this, R.layout.support_simple_spinner_dropdown_item, bujias);
+                    listaBujias.setAdapter(adaptador);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ModificarMotor.this,"Error con la base de datos: bujia",Toast.LENGTH_LONG).show();
+            }
+        });
+/*
         //llenado del arrayList
         bujias.add(parte1.getNombreParte());
         bujias.add(parte2.getNombreParte());
@@ -82,11 +116,31 @@ public class ModificarMotor extends AppCompatActivity {
         //adaptador de tipo arrayList para el spinner que muestra las bujias
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(ModificarMotor.this, R.layout.support_simple_spinner_dropdown_item, bujias);
         listaBujias.setAdapter(adaptador);
-
+*/
         //Evento Spiner
         listaBujias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String bujiaSeleccionada = listaBujias.getSelectedItem().toString();
+                dataBase.child("Bujia").equalTo(bujiaSeleccionada).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Bujia bujiaModificada = new Bujia();
+                        bujiaModificada.setNombreBujia(snapshot.getKey());
+                        bujiaModificada.setPotencia(Float.parseFloat(snapshot.child("potencia").getValue().toString()));
+                        motor.setPotencia((potenciaMotor+( potenciaMotor*bujiaModificada.getPotencia())));
+                        labelPorcentaje.setText(" -  Aumenta "+(bujiaModificada.getPotencia()*100)+"%");
+                        labelRendimientoModificado.setText(""+motor.getPotencia());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ModificarMotor.this,"Error modificando bujia",Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+/*
                 switch(listaBujias.getSelectedItem().toString()){
                     case "U-GROOVE K20PR-U11":
                         motor.setPotencia((long) (potenciaMotor+( potenciaMotor*0.06)));
@@ -112,6 +166,8 @@ public class ModificarMotor extends AppCompatActivity {
                         break;
                 }
                 labelRendimientoModificado.setText(""+motor.getPotencia());
+
+ */
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

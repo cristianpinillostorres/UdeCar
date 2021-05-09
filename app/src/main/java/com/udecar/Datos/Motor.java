@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class Motor implements Serializable {
     private String nombreMotor;
-    private long cilindraje;
-    private long potencia;
+    private float cilindraje;
+    private float potencia;
     private String tipoBujia;
     private String tipoFiltro;
 
     public Motor(){
     }
 
-    public Motor(String nombreMotor, long cilindraje, long potencia, String tipoBujia, String tipoFiltro) {
+    public Motor(String nombreMotor, float cilindraje, float potencia, String tipoBujia, String tipoFiltro) {
         this.nombreMotor = nombreMotor;
         this.cilindraje = cilindraje;
         this.potencia = potencia;
@@ -32,7 +32,7 @@ public class Motor implements Serializable {
         return cilindraje;
     }
 
-    public void setCilindraje(long cilindraje) {
+    public void setCilindraje(float cilindraje) {
         this.cilindraje = cilindraje;
     }
 
@@ -40,7 +40,7 @@ public class Motor implements Serializable {
         return potencia;
     }
 
-    public void setPotencia(long potencia) {
+    public void setPotencia(float potencia) {
         this.potencia = potencia;
     }
 
@@ -59,6 +59,4 @@ public class Motor implements Serializable {
     public void setTipoFiltro(String tipoFiltro) {
         this.tipoFiltro = tipoFiltro;
     }
-
-
 }

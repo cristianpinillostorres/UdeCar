@@ -8,7 +8,7 @@ public class Automovil implements Serializable{
     private String nombreAutomovil;
     private String nombreFrenos;
     private String nombreMotor;
-    private long pesoAutomovil;
+    private float pesoAutomovil;
 
     public Automovil(){
 
@@ -17,7 +17,7 @@ public class Automovil implements Serializable{
     public Automovil( String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor,String nombreFrenos) {
         this.nombreAutomovil = nombreAutomovil;
         this.imagenAutomovil = imagenAutomovil;
-        this.pesoAutomovil = (long) pesoAutomovil;
+        this.pesoAutomovil = pesoAutomovil;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.nombreMotor = nombreMotor;
@@ -38,14 +38,6 @@ public class Automovil implements Serializable{
 
     public void setImagenAutomovil(int imagenAutomovil) {
         this.imagenAutomovil = imagenAutomovil;
-    }
-
-    public float getPesoAutomovil() {
-        return pesoAutomovil;
-    }
-
-    public void setPesoAutomovil(long pesoAutomovil) {
-        this.pesoAutomovil = pesoAutomovil;
     }
 
     public String getDescripcion() {
@@ -80,5 +72,11 @@ public class Automovil implements Serializable{
         this.nombreFrenos = nombreFrenos;
     }
 
+    public float getPesoAutomovil() {
+        return pesoAutomovil;
+    }
 
+    public void setPesoAutomovil(float pesoAutomovil) {
+        this.pesoAutomovil = pesoAutomovil;
+    }
 }

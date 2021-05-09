@@ -60,7 +60,13 @@ public class VistaModificaciones extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     for(DataSnapshot templateSnapshot : snapshot.getChildren()){
-                        Motor motores = templateSnapshot.getValue(Motor.class);
+                        //Motor motores = templateSnapshot.getValue(Motor.class);
+                        Motor motores = new Motor();
+                        motores.setNombreMotor(templateSnapshot.getKey());
+                        motores.setPotencia(Float.parseFloat(templateSnapshot.child("potencia").getValue().toString()));
+                        motores.setCilindraje(Float.parseFloat(templateSnapshot.child("cilindraje").getValue().toString()));
+                        motores.setTipoBujia(templateSnapshot.child("tipoBujia").getValue().toString());
+                        motores.setTipoFiltro(templateSnapshot.child("tipoFiltro").getValue().toString());
                         arrayMotores.add(motores);
                     }
                     System.out.println("######## "+arrayMotores.size());
@@ -68,8 +74,8 @@ public class VistaModificaciones extends AppCompatActivity {
                     for (int i=0;i<arrayMotores.size();i++) {
                         if (auto.getNombreMotor().equals(arrayMotores.get(i).getNombreMotor())) {
                             motor.setNombreMotor(arrayMotores.get(i).getNombreMotor());
-                            motor.setCilindraje((long) arrayMotores.get(i).getCilindraje());
-                            motor.setPotencia((long) arrayMotores.get(i).getPotencia());
+                            motor.setCilindraje(arrayMotores.get(i).getCilindraje());
+                            motor.setPotencia(arrayMotores.get(i).getPotencia());
                             motor.setTipoBujia(arrayMotores.get(i).getTipoBujia());
                             motor.setTipoFiltro(arrayMotores.get(i).getTipoFiltro());
                         }
