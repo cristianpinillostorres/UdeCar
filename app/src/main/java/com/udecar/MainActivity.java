@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
         Intent myintent = new Intent(MainActivity.this,VistaSeleccionarAuto.class);
         startActivity(myintent);
     }
-
+    public void vistaAdminitrador(View view){
+        Intent myintent = new Intent(MainActivity.this,CrearAutos.class);
+        startActivity(myintent);
+    }
     public void vistaRegistroUsuario(View view){
         Intent myintent = new Intent(MainActivity.this, Registro.class);
         startActivity(myintent);
