@@ -10,6 +10,7 @@
         android:id="@+id/btnCrearAutos"
         android:layout_width="260dp"
         android:layout_height="52dp"
+        android:onClick="vistaCrearAutos"
         android:text="Crear Autos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

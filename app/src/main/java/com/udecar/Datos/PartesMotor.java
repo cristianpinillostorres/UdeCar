@@ -5,14 +5,18 @@ public class PartesMotor {
     private int idParte;
     private int categoria;
     private String nombreParte;
+    private String categoriaAuto;
+    private int idCategoria;
 
-    public PartesMotor() {
+    public PartesMotor(int i1, int i, String s) {
     }
 
-    public PartesMotor(int idParte, int categoria, String nombreParte) {
+    public PartesMotor(int idParte, int categoria, String nombreParte, int idCategoria, String categoriaAuto) {
         this.idParte = idParte;
         this.categoria = categoria;
         this.nombreParte = nombreParte;
+        this.idCategoria = idCategoria;
+        this.categoriaAuto = categoriaAuto;
     }
     public int getIdParte() {
         return idParte;
@@ -20,6 +24,20 @@ public class PartesMotor {
 
     public void setIdParte(int idParte) {
         this.idParte = idParte;
+    }
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoriae(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getCategoriaAuto() { return categoriaAuto; }
+
+    public void setCategoriaAuto(String categoriaAuto) {
+        this.categoriaAuto = categoriaAuto;
     }
 
     public String getNombreParte() {
