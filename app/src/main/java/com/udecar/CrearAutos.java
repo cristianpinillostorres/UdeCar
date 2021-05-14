@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.udecar.Datos.Automovil;
+import com.udecar.Datos.Bujia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class CrearAutos<categoria> extends AppCompatActivity implements View.OnC
     private EditText nombreAuto;
     private EditText tipoFreno;
     private EditText tipoMotor;
-    private EditText descripcion, peso;
+    private EditText descripcion, peso, bujia, potencia;
     private Button btnCrear, btnActualizar;
     private Spinner sp_Categoria;
     private ListView autos;
@@ -57,6 +58,8 @@ public class CrearAutos<categoria> extends AppCompatActivity implements View.OnC
         tipoFreno = (EditText) findViewById(R.id.txtTipoFreno);
         tipoMotor = (EditText) findViewById(R.id.txtTipoMotor);
         descripcion = (EditText) findViewById(R.id.txtDescripcion);
+        bujia = (EditText) findViewById(R.id.txtBujia);
+        potencia = (EditText) findViewById(R.id.txtBujia);
         peso = (EditText) findViewById(R.id.txtPeso);
         btnCrear= (Button) findViewById(R.id.btnCrear);
         btnActualizar= (Button) findViewById(R.id.btn_Actualizar);
@@ -133,6 +136,8 @@ public class CrearAutos<categoria> extends AppCompatActivity implements View.OnC
         String motor = tipoMotor.getText().toString();
         String descrip = descripcion.getText().toString();
         String categ = sp_Categoria.toString();
+        String bujiaa = bujia.toString();
+        String potenciaa = potencia.toString();
         String pso = peso.getText().toString();
 
 
@@ -159,6 +164,9 @@ public class CrearAutos<categoria> extends AppCompatActivity implements View.OnC
 
         else {
             Automovil a = new Automovil();
+            Bujia b = new Bujia();
+
+
 
             a.setNombreAutomovil(nombre);
             a.setNombreFrenos(freno);
@@ -166,8 +174,11 @@ public class CrearAutos<categoria> extends AppCompatActivity implements View.OnC
             a.setDescripcion(descrip);
             a.setCategoria(categ);
             //a.setPesoAutomovil(pso);
-
+            b.setTipoBujia(bujiaa);
+           // b.setPotencia(potenciaa);
+//Firebase
             databaseReference.child("Automoviles").child(a.getNombreAutomovil()).setValue(a);
+            databaseReference.child("Bujia").child(a.getNombreAutomovil()).setValue(a);
             Toast.makeText(this, "Agregado", Toast.LENGTH_SHORT).show();
             limpiarCajas();
         }
@@ -204,7 +215,6 @@ public class CrearAutos<categoria> extends AppCompatActivity implements View.OnC
         tipoFreno.setText("");
         tipoMotor.setText("");
         descripcion.setText("");
-       
         peso.setText("");
 
 
