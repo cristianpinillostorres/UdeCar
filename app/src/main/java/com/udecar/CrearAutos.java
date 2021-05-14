@@ -21,13 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.udecar.Datos.Automovil;
-import com.udecar.Datos.PartesMotor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-public class CrearAutos extends AppCompatActivity implements View.OnClickListener {
+public class CrearAutos<categoria> extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private List<Automovil> listAutos = new ArrayList<Automovil>();
     ArrayAdapter<Automovil> arrayAdapterAutos;
@@ -36,9 +34,10 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
     private EditText tipoFreno;
     private EditText tipoMotor;
     private EditText descripcion, peso;
-    private Button btnCrear, btnActualizar, btnEliminar;
+    private Button btnCrear, btnActualizar;
     private Spinner sp_Categoria;
     private ListView autos;
+
 
     private ProgressDialog progressDialog;
 
@@ -61,8 +60,8 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
         peso = (EditText) findViewById(R.id.txtPeso);
         btnCrear= (Button) findViewById(R.id.btnCrear);
         btnActualizar= (Button) findViewById(R.id.btn_Actualizar);
-        btnEliminar= (Button) findViewById(R.id.btn_Eliminar);
-        sp_Categoria = (Spinner) findViewById(R.id.spCategoria); 
+        sp_Categoria = findViewById(R.id.spCategoria);
+        sp_Categoria.setOnItemSelectedListener(this);
 
         autos = (ListView) findViewById(R.id.lvAutos);
 
@@ -70,12 +69,12 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
         firebaseDatabase = firebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         listAutos();
-        llenarCategoria();
+       categoria();
 
 
        btnCrear.setOnClickListener(this);
        btnActualizar.setOnClickListener(this);
-       btnEliminar.setOnClickListener(this);
+
 
         autos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -85,38 +84,17 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
                 tipoFreno.setText(autoSelected.getNombreFrenos());
                 tipoMotor.setText(autoSelected.getNombreMotor());
                 descripcion.setText(autoSelected.getDescripcion());
-                peso.setText((int) autoSelected.getPesoAutomovil());
+                //peso.setText((int) autoSelected.getPesoAutomovil());
+
             }
         });
+
 
     }
+ private void categoria (){
+     String [] categorias ={"Categoria 1", "Categoria 2", "Categoria 3"};
+     sp_Categoria.setAdapter((new ArrayAdapter<String>(CrearAutos.this, android.R.layout.simple_spinner_dropdown_item, categorias)));
 
-    private void llenarCategoria() {
-        PartesMotor parte1 = new PartesMotor(6, 5, "Categoria 1");
-        PartesMotor parte2 = new PartesMotor(6, 6, "Categoria 2");
-        PartesMotor parte3 = new PartesMotor(6, 7, "Categoria 3");
-
-        ArrayList<String> partes = new ArrayList<>();
-
-        partes.add(parte1.getNombreParte());
-        partes.add(parte2.getNombreParte());
-        partes.add(parte3.getNombreParte());
-
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, partes);
-        sp_Categoria.setAdapter(adaptador);
-
-
-        sp_Categoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),"selecciono: "+parent.getItemAtPosition(position).toString() ,Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     private void listAutos() {
@@ -124,13 +102,21 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listAutos.clear();
-                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()){
-                    Automovil a = objSnaptshot.getValue(Automovil.class);
+                for (DataSnapshot auto : dataSnapshot.getChildren()){
+                    Automovil a = auto.getValue(Automovil.class);
+                    a.setNombreAutomovil(auto.getKey());
+                    a.setPesoAutomovil(Float.parseFloat(auto.child("pesoAutomovil").getValue().toString()));
+                    a.setNombreMotor(auto.child("nombreMotor").getValue().toString());
+                    a.setDescripcion(auto.child("descripcion").getValue().toString());
+                    a.setNombreFrenos(auto.child("nombreFrenos").getValue().toString());
+                    a.setImagenAutomovil(Integer.parseInt(auto.child("imagenAutomovil").getValue().toString()));
+                    a.setCategoria(auto.child("categoria").getValue().toString());
                     listAutos.add(a);
 
                     arrayAdapterAutos = new ArrayAdapter<Automovil>(CrearAutos.this, android.R.layout.simple_list_item_1, listAutos);
                     autos.setAdapter(arrayAdapterAutos);
                 }
+
             }
 
             @Override
@@ -145,6 +131,10 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
         String nombre = nombreAuto.getText().toString();
         String freno = tipoFreno.getText().toString();
         String motor = tipoMotor.getText().toString();
+        String descrip = descripcion.getText().toString();
+        String categ = sp_Categoria.toString();
+        String pso = peso.getText().toString();
+
 
         if (TextUtils.isEmpty(nombre)){
             Toast.makeText(this, "Por favor ingrese un nombre de auto", Toast.LENGTH_SHORT).show();
@@ -160,13 +150,24 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(this, "Por favor ingrese un tipo de motor", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (TextUtils.isEmpty(descrip)){
+            Toast.makeText(this, "Por favor ingrese una descripcion", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
         else {
             Automovil a = new Automovil();
-            a.getIdAuto(UUID.randomUUID().toString());
+
             a.setNombreAutomovil(nombre);
             a.setNombreFrenos(freno);
             a.setNombreMotor(motor);
-            databaseReference.child("Automoviles").child(a.getIdAuto()).setValue(a);
+            a.setDescripcion(descrip);
+            a.setCategoria(categ);
+            //a.setPesoAutomovil(pso);
+
+            databaseReference.child("Automoviles").child(a.getNombreAutomovil()).setValue(a);
             Toast.makeText(this, "Agregado", Toast.LENGTH_SHORT).show();
             limpiarCajas();
         }
@@ -179,33 +180,34 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
         String nombre = nombreAuto.getText().toString();
         String freno = tipoFreno.getText().toString();
         String motor = tipoMotor.getText().toString();
+        String categ = sp_Categoria.toString();
+        String descrip = descripcion.getText().toString();
+        // pso = peso.getText().toString();
 
         Automovil b = new Automovil();
-        b.setIdAuto(autoSelected.getIdAuto());
+        b.setNombreMotor(autoSelected.getNombreAutomovil());
         b.setNombreAutomovil(nombreAuto.getText().toString().trim());
         b.setNombreFrenos(tipoFreno.getText().toString().trim());
         b.setNombreMotor(tipoMotor.getText().toString().trim());
-        databaseReference.child("Automoviles").child(b.getIdAuto()).setValue(b);
+        b.setCategoria(sp_Categoria.getSelectedItem().toString().trim());
+
+
+        databaseReference.child("Automoviles").child(b.getNombreAutomovil()).setValue(b);
         Toast.makeText(this,"Actualizado", Toast.LENGTH_LONG).show();
         limpiarCajas();
 
 
     }
 
-    private void eliminar() {
-        Automovil p = new Automovil();
-        p.setIdAuto(autoSelected.getIdAuto());
-        databaseReference.child("Automoviles").child(p.getIdAuto()).removeValue();
-        Toast.makeText(this,"Eliminado", Toast.LENGTH_LONG).show();
-        limpiarCajas();
-
-    }
-
-
     private void limpiarCajas(){
         nombreAuto.setText("");
         tipoFreno.setText("");
         tipoMotor.setText("");
+        descripcion.setText("");
+       
+        peso.setText("");
+
+
 
     }
 
@@ -213,9 +215,16 @@ public class CrearAutos extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Registrar();
-        actualizar();
-        eliminar();
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

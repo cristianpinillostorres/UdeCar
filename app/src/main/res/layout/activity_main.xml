@@ -88,7 +88,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="47dp"
             android:onClick="vistaAdminitrador"
-            android:text="Adminitrador "
+            android:text="@string/btnAdministrador"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

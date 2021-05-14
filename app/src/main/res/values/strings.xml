@@ -17,6 +17,8 @@
     <string name="TextEmail">Ingrese su correo</string>
     <string name="TextContraseña">Ingrese su contraseña</string>
     <string name="btnIniciarSesion">Iniciar Sesion</string>
+    <string name="btnAdministrador">Administrador</string>
+    <string name="btnCrearAutos">Crear Autos</string>
 
 
 </resources>

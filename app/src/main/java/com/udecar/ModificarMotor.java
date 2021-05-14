@@ -145,6 +145,7 @@ public class ModificarMotor extends AppCompatActivity {
         PartesMotor parte7 = new PartesMotor(7, 2,"PLATINUM TT PK20TT");
         PartesMotor parte8 = new PartesMotor(8, 2,"DOUBLE PLATINUM PK20PR11");
 
+
         //Creacion del arrayList de tipo "PartesMotor"
         ArrayList<String> filtros = new ArrayList<>();
         //llenado del arrayList
