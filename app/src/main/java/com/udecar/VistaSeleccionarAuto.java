@@ -58,7 +58,7 @@ public class VistaSeleccionarAuto extends AppCompatActivity {
                         nuevoAuto.setDescripcion(auto.child("descripcion").getValue().toString());
                         nuevoAuto.setNombreFrenos(auto.child("nombreFrenos").getValue().toString());
                         nuevoAuto.setImagenAutomovil(Integer.parseInt(auto.child("imagenAutomovil").getValue().toString()));
-                        nuevoAuto.setCategoria(auto.child("categoria").getValue().toString());
+                       // nuevoAuto.setCategoria(auto.child("categoria").getValue().toString());
                         listaAutomoviles.add(nuevoAuto);
                     }
                     adaptador = new Adaptador(VistaSeleccionarAuto.this, listaAutomoviles);
