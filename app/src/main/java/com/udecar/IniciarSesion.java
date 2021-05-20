@@ -90,6 +90,7 @@ public class IniciarSesion extends Fragment implements View.OnClickListener {
                         }else{
                             Toast.makeText(getContext(), "No se pudo registrar el usuario. Intente nuevamente ", Toast.LENGTH_LONG).show();
                         }
+                        System.out.println("");
                         progressDialog.dismiss();
                     }
 
