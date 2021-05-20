@@ -15,12 +15,7 @@
         <activity android:name=".PrincipalAdmi" />
         <activity android:name=".CrearAutos" />
         <activity android:name=".RecuperarContra" />
-        <activity android:name=".PrincipalUsuario" />
-        <activity android:name=".Login" />
-        <activity android:name=".Registro" />
-        <activity android:name=".VistaSeleccionarAuto" />
-        <activity android:name=".VistaModificaciones" />
-        <activity android:name=".ModificarFrenos" />
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

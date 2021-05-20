@@ -17,22 +17,4 @@ public class Inicio extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio,container,false);
         return view;
     }
-
-    public void vistaSeleccionarAuto(View view){
-        Intent myintent = new Intent(getContext(),VistaSeleccionarAuto.class);
-        startActivity(myintent);
-    }
-    public void vistaAdminitrador(View view){
-        Intent myintent = new Intent(getContext(),CrearAutos.class);
-        startActivity(myintent);
-    }
-    public void vistaRegistroUsuario(View view){
-        Intent myintent = new Intent(getContext(), Registro.class);
-        startActivity(myintent);
-    }
-
-    public void iniciarSesion(View view){
-        Intent myintent = new Intent(getContext(), Login.class);
-        startActivity(myintent);
-    }
 }

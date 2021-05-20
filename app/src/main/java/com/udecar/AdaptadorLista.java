@@ -66,14 +66,7 @@ public class AdaptadorLista extends BaseAdapter {
         tv_NombreAuto.setText(automovil.getNombreAutomovil());
         tv_InfoAuto.setText(informacion);
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, VistaModificaciones.class);
-                intent.putExtra("item", automovil);
-                context.startActivity(intent);
-            }
-        });
+
         return convertView;
     }
 
