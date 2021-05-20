@@ -4,59 +4,59 @@ import java.io.Serializable;
 
 public class Motor implements Serializable {
     private String nombreMotor;
-    private float cilindraje;
-    private float potencia;
+    private String descripcionMotor;
     private String tipoBujia;
     private String tipoFiltro;
+    private float potencia;
 
     public Motor(){
     }
 
-    public Motor(String nombreMotor, float cilindraje, float potencia, String tipoBujia, String tipoFiltro) {
+    public Motor (String nombreMotor, String descripcionMotor, String tipoBujia, String tipoFiltro, float potencia) {
         this.nombreMotor = nombreMotor;
-        this.cilindraje = cilindraje;
-        this.potencia = potencia;
+        this.descripcionMotor = descripcionMotor;
         this.tipoBujia = tipoBujia;
         this.tipoFiltro = tipoFiltro;
+        this.potencia = potencia;
     }
 
-    public String getNombreMotor() {
+    public String getNombreMotor () {
         return nombreMotor;
     }
 
-    public void setNombreMotor(String nombreMotor) {
+    public void setNombreMotor (String nombreMotor) {
         this.nombreMotor = nombreMotor;
     }
 
-    public float getCilindraje() {
-        return cilindraje;
+    public String getDescripcionMotor () {
+        return descripcionMotor;
     }
 
-    public void setCilindraje(float cilindraje) {
-        this.cilindraje = cilindraje;
+    public void setDescripcionMotor (String descripcionMotor) {
+        this.descripcionMotor = descripcionMotor;
     }
 
-    public float getPotencia() {
-        return potencia;
-    }
-
-    public void setPotencia(float potencia) {
-        this.potencia = potencia;
-    }
-
-    public String getTipoBujia() {
+    public String getTipoBujia () {
         return tipoBujia;
     }
 
-    public void setTipoBujia(String tipoBujia) {
+    public void setTipoBujia (String tipoBujia) {
         this.tipoBujia = tipoBujia;
     }
 
-    public String getTipoFiltro() {
+    public String getTipoFiltro () {
         return tipoFiltro;
     }
 
-    public void setTipoFiltro(String tipoFiltro) {
+    public void setTipoFiltro (String tipoFiltro) {
         this.tipoFiltro = tipoFiltro;
+    }
+
+    public float getPotencia () {
+        return potencia;
+    }
+
+    public void setPotencia (float potencia) {
+        this.potencia = potencia;
     }
 }

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:id="@+id/drawer">
+    tools:context=".VistaUsuario"
+    android:id="@+id/drawer_registrado"
+    >
 
     <include android:layout_height="match_parent"
         android:layout_width="wrap_content"
@@ -13,7 +14,7 @@
     </include>
 
     <include
-        layout="@layout/content_main"
+        layout="@layout/content_user"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp"></include>
@@ -22,10 +23,10 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:menu="@menu/drawer_menu"
+        app:menu="@menu/drawer_menu_registrado"
         app:headerLayout="@layout/drawer_header"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-    />
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -64,7 +64,7 @@ public class VistaModificaciones extends AppCompatActivity {
                         Motor motores = new Motor();
                         motores.setNombreMotor(templateSnapshot.getKey());
                         motores.setPotencia(Float.parseFloat(templateSnapshot.child("potencia").getValue().toString()));
-                        motores.setCilindraje(Float.parseFloat(templateSnapshot.child("cilindraje").getValue().toString()));
+                        //motores.setCilindraje(Float.parseFloat(templateSnapshot.child("cilindraje").getValue().toString()));
                         motores.setTipoBujia(templateSnapshot.child("tipoBujia").getValue().toString());
                         motores.setTipoFiltro(templateSnapshot.child("tipoFiltro").getValue().toString());
                         arrayMotores.add(motores);
@@ -74,7 +74,7 @@ public class VistaModificaciones extends AppCompatActivity {
                     for (int i=0;i<arrayMotores.size();i++) {
                         if (auto.getNombreMotor().equals(arrayMotores.get(i).getNombreMotor())) {
                             motor.setNombreMotor(arrayMotores.get(i).getNombreMotor());
-                            motor.setCilindraje(arrayMotores.get(i).getCilindraje());
+                            //motor.setCilindraje(arrayMotores.get(i).getCilindraje());
                             motor.setPotencia(arrayMotores.get(i).getPotencia());
                             motor.setTipoBujia(arrayMotores.get(i).getTipoBujia());
                             motor.setTipoFiltro(arrayMotores.get(i).getTipoFiltro());
@@ -89,11 +89,6 @@ public class VistaModificaciones extends AppCompatActivity {
         });
     }
 
-    public void vistaModificarMotor (View view){
-        Intent myintent = new Intent(VistaModificaciones.this, ModificarMotor.class);
-        myintent.putExtra("itemMotor", motor);
-        startActivity(myintent);
-    }
 
     public void vistaModificarFrenos (View view){
         Intent myintent = new Intent(VistaModificaciones.this, ModificarFrenos.class);

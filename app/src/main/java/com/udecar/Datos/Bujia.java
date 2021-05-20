@@ -3,13 +3,15 @@ package com.udecar.Datos;
 public class Bujia {
     private float potencia;
     private String tipoBujia;
+    private String descripcionBujia;
 
     public Bujia() {
     }
 
-    public Bujia(float potencia, String tipoBujia) {
+    public Bujia (float potencia, String tipoBujia, String descripcionBujia) {
         this.potencia = potencia;
         this.tipoBujia = tipoBujia;
+        this.descripcionBujia = descripcionBujia;
     }
 
     public float getPotencia() {
@@ -26,5 +28,13 @@ public class Bujia {
 
     public void setTipoBujia(String tipoBujia) {
         this.tipoBujia = tipoBujia;
+    }
+
+    public String getdescripcionBujia () {
+        return descripcionBujia;
+    }
+
+    public void setdescripcionBujia (String descripcionBujia) {
+        this.descripcionBujia = descripcionBujia;
     }
 }

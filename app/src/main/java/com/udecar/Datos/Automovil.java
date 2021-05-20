@@ -4,24 +4,25 @@ import java.io.Serializable;
 public class Automovil implements Serializable{
     private String categoria;
     private String descripcion;
-    private int imagenAutomovil;//cambiar para usar BD
     private String nombreAutomovil;
     private String nombreFrenos;
     private String nombreMotor;
-    private float pesoAutomovil;
+    private String nombreLlantas;
+    private int imagenAutomovil;//cambiar para usar BD
+    private float agarre;
 
     public Automovil(){
-
     }
 
-    public Automovil( String nombreAutomovil, int imagenAutomovil, float pesoAutomovil, String descripcion, String categoria, String nombreMotor,String nombreFrenos) {
-        this.nombreAutomovil = nombreAutomovil;
-        this.imagenAutomovil = imagenAutomovil;
-        this.pesoAutomovil = pesoAutomovil;
-        this.descripcion = descripcion;
+    public Automovil (String categoria, String descripcion, String nombreAutomovil, String nombreFrenos, String nombreMotor, String nombreLlantas, int imagenAutomovil, float agarre) {
         this.categoria = categoria;
-        this.nombreMotor = nombreMotor;
+        this.descripcion = descripcion;
+        this.nombreAutomovil = nombreAutomovil;
         this.nombreFrenos = nombreFrenos;
+        this.nombreMotor = nombreMotor;
+        this.nombreLlantas = nombreLlantas;
+        this.imagenAutomovil = imagenAutomovil;
+        this.agarre = agarre ;
     }
 
     public String getNombreAutomovil() {
@@ -30,14 +31,6 @@ public class Automovil implements Serializable{
 
     public void setNombreAutomovil(String nombreAutomovil) {
         this.nombreAutomovil = nombreAutomovil;
-    }
-
-    public int getImagenAutomovil() {
-        return imagenAutomovil;
-    }
-
-    public void setImagenAutomovil(int imagenAutomovil) {
-        this.imagenAutomovil = imagenAutomovil;
     }
 
     public String getDescripcion() {
@@ -72,11 +65,27 @@ public class Automovil implements Serializable{
         this.nombreFrenos = nombreFrenos;
     }
 
-    public float getPesoAutomovil() {
-        return pesoAutomovil;
+    public String getNombreLlantas () {
+        return nombreLlantas;
     }
 
-    public void setPesoAutomovil(float pesoAutomovil) {
-        this.pesoAutomovil = pesoAutomovil;
+    public void setNombreLlantas (String nombreLlantas) {
+        this.nombreLlantas = nombreLlantas;
+    }
+
+    public float getAgarre () {
+        return agarre;
+    }
+
+    public void setAgarre (float agarre) {
+        this.agarre = agarre;
+    }
+
+    public int getImagenAutomovil () {
+        return imagenAutomovil;
+    }
+
+    public void setImagenAutomovil (int imagenAutomovil) {
+        this.imagenAutomovil = imagenAutomovil;
     }
 }

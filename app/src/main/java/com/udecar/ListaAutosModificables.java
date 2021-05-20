@@ -1,14 +1,17 @@
 package com.udecar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,33 +22,28 @@ import com.udecar.Datos.Automovil;
 
 import java.util.ArrayList;
 
-public class VistaSeleccionarAuto extends AppCompatActivity {
+public class ListaAutosModificables extends Fragment {
 
-    private ListView lv_Autos;
+    private ListView lv_autos;
     private Adaptador adaptador;
     private ArrayList<Automovil> listaAutomoviles = new ArrayList<>();
     private DatabaseReference dataBase;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vista_seleccionar_auto);
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_lista_autos_modificables, container, false);
         dataBase = FirebaseDatabase.getInstance().getReference();
-
-        lv_Autos = findViewById(R.id.lv_autos);
+        lv_autos = view.findViewById(R.id.lv_autos);
 
         listarDatos();
-        lv_Autos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myintent = new Intent(VistaSeleccionarAuto.this,VistaModificaciones.class);
-                startActivity(myintent);
-            }
-        });
+
+        return view;
     }
+
     //Conexión con Realtime Database
     private void listarDatos() {
+        listaAutomoviles.clear();
         dataBase.child("Automoviles").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -53,22 +51,23 @@ public class VistaSeleccionarAuto extends AppCompatActivity {
                     for (DataSnapshot auto : snapshot.getChildren()){
                         Automovil nuevoAuto = new Automovil();
                         nuevoAuto.setNombreAutomovil(auto.getKey());
-                        //nuevoAuto.setPesoAutomovil(Float.parseFloat(auto.child("pesoAutomovil").getValue().toString()));
-                        nuevoAuto.setNombreMotor(auto.child("nombreMotor").getValue().toString());
-                        nuevoAuto.setDescripcion(auto.child("descripcion").getValue().toString());
-                        nuevoAuto.setNombreFrenos(auto.child("nombreFrenos").getValue().toString());
-                        nuevoAuto.setImagenAutomovil(Integer.parseInt(auto.child("imagenAutomovil").getValue().toString()));
                         nuevoAuto.setCategoria(auto.child("categoria").getValue().toString());
+                        nuevoAuto.setDescripcion(auto.child("descripcion").getValue().toString());
+                        nuevoAuto.setNombreMotor(auto.child("nombreMotor").getValue().toString());
+                        nuevoAuto.setNombreFrenos(auto.child("nombreFrenos").getValue().toString());
+                        nuevoAuto.setNombreLlantas(auto.child("nombreLlantas").getValue().toString());
+                        nuevoAuto.setImagenAutomovil(Integer.parseInt(auto.child("imagenAutomovil").getValue().toString()));
+                        nuevoAuto.setAgarre(Float.parseFloat(auto.child("agarreAuto").getValue().toString()));
+
                         listaAutomoviles.add(nuevoAuto);
                     }
-                    adaptador = new Adaptador(VistaSeleccionarAuto.this, listaAutomoviles);
-                    lv_Autos.setAdapter(adaptador);
+                    adaptador = new Adaptador(getContext(), listaAutomoviles);
+                    lv_autos.setAdapter(adaptador);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(VistaSeleccionarAuto.this,"Error consultando base de datos", Toast.LENGTH_LONG).show();
             }
         });
 

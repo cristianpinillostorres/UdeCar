@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PrincipalAdmi"></activity>
+        <activity android:name=".VistaUsuario" android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".PrincipalAdmi" />
         <activity android:name=".CrearAutos" />
         <activity android:name=".RecuperarContra" />
         <activity android:name=".PrincipalUsuario" />
@@ -18,8 +21,9 @@
         <activity android:name=".VistaSeleccionarAuto" />
         <activity android:name=".VistaModificaciones" />
         <activity android:name=".ModificarFrenos" />
-        <activity android:name=".ModificarMotor" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

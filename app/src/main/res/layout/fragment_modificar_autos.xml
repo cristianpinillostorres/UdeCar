@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VistaModificaciones">
+    tools:context=".ModificarAutos">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,18 +19,18 @@
 
         <Button
             android:id="@+id/btn_terminar"
-            android:layout_width="139dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="152dp"
+            android:layout_width="137dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="16dp"
+
             android:background="@color/colorPrimary"
-            android:onClick="vistaModificarFrenos"
             android:text="Terminar"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintHorizontal_bias="0.941"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_modificarFrenos" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_modificarLlantas" />
 
         <TextView
             android:id="@+id/textView4"
@@ -51,7 +51,7 @@
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="385dp"
-            android:layout_height="220dp"
+            android:layout_height="345dp"
             android:layout_marginTop="10dp"
             android:background="#FFFFFF"
             android:backgroundTint="#FFFFFF"
@@ -74,56 +74,84 @@
 
             <ImageView
                 android:id="@+id/img_imagenAuto"
-                android:layout_width="180dp"
+                android:layout_width="175dp"
                 android:layout_height="158dp"
                 android:layout_below="@+id/tv_nombreAuto"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="11dp"
                 android:src="@drawable/automovil"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/tv_infoAuto"
-                android:layout_width="173dp"
-                android:layout_height="161dp"
+                android:layout_width="183dp"
+                android:layout_height="158dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="48dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_descripcionAuto"
+                android:layout_width="362dp"
+                android:layout_height="99dp"
+                android:layout_below="@+id/img_imagenAuto"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="27dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
         </RelativeLayout>
 
         <Button
-            android:id="@+id/btn_modificarMotor"
-            android:layout_width="187dp"
-            android:layout_height="79dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="60dp"
+            android:id="@+id/btn_modificarFrenos"
+            android:layout_width="120dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
             android:background="@color/colorPrimary"
+
+            android:text="@string/btnFrenos"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_modificarMotor"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+        <Button
+            android:id="@+id/btn_modificarMotor"
+            android:layout_width="120dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/colorPrimary"
+
+            android:onClick="onClick"
             android:text="@string/btnMotor"
             android:textColor="#FFFFFF"
-            android:textSize="22sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
         <Button
-            android:id="@+id/btn_modificarFrenos"
-            android:layout_width="187dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="20dp"
+            android:id="@+id/btn_modificarLlantas"
+            android:layout_width="120dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+
             android:background="@color/colorPrimary"
-            android:onClick="vistaModificarFrenos"
-            android:text="@string/btnFrenos"
+            android:text="Modificar Llantas"
             android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_modificarMotor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_modificarFrenos"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

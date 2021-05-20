@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ModificarMotor">
+    tools:context=".ModificarFrenosAuto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,12 +13,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorAccent">
 
             <RelativeLayout
                 android:id="@+id/relativeLayout6"
-                android:layout_width="379dp"
+                android:layout_width="380dp"
                 android:layout_height="120dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
@@ -27,52 +26,60 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
 
-            <TextView
-                android:id="@+id/label5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="8dp"
-                android:text="Resultados de Modificaciones"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/label5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Resultados de Modificaciones"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/potencia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/label5"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="9dp"
-                android:text="Potencia: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/agarre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/label5"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Frenado:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tv_porcentajeRendimiento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/label5"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="9dp"
-                android:layout_toEndOf="@+id/tv_rendimientoModificado"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tv_porcentajeFrenado"
+                    android:layout_width="344dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_frenadoModificado"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="21dp"
+                    android:layout_marginBottom="7dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tv_rendimientoModificado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/label5"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="9dp"
-                android:layout_toEndOf="@+id/potencia"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_frenadoModificado"
+                    android:layout_width="243dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/label5"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/agarre"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
 
@@ -81,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Modificacion del Motor "
+                android:text="Modificacion de Frenos"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/colorPrimary"
@@ -94,51 +101,54 @@
 
             <RelativeLayout
                 android:id="@+id/relativeLayout3"
-                android:layout_width="380dp"
-                android:layout_height="170dp"
+                android:layout_width="379dp"
+                android:layout_height="196dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:background="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView">
-                
+
+
                 <TextView
-                    android:id="@+id/tv_nombreMotor"
-                    android:layout_width="200dp"
+                    android:id="@+id/tv_nombreFrenos"
+                    android:layout_width="354dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="20sp" />
+
+
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageViewF"
                     android:layout_width="144dp"
                     android:layout_height="109dp"
-                    android:layout_below="@+id/tv_nombreMotor"
+                    android:layout_below="@id/tv_nombreFrenos"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="19dp"
                     app:srcCompat="@drawable/motor" />
 
                 <TextView
-                    android:id="@+id/infoMotor"
-                    android:layout_width="188dp"
-                    android:layout_height="112dp"
+                    android:id="@+id/infoFrenos"
+                    android:layout_width="196dp"
+                    android:layout_height="138dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="47dp"
-                    android:layout_marginEnd="19dp"
+                    android:layout_marginEnd="11dp"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relativeLayout5"
-                android:layout_width="379dp"
-                android:layout_height="170dp"
+                android:layout_width="376dp"
+                android:layout_height="88dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:background="#FFFFFF"
@@ -153,11 +163,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="Bujías"
+                    android:text="Valvulas"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
+
                 <Spinner
-                    android:id="@+id/ddl_listaBujias"
+                    android:id="@+id/ddl_listaValvulas"
                     android:layout_width="264dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -168,42 +179,6 @@
                     android:layout_toEndOf="@+id/label1"
                     android:prompt="@string/seleccionBujia"
                     android:spinnerMode="dialog" />
-                <TextView
-                    android:id="@+id/label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/label1"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Filtro de aire"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/ddl_listaFiltros"
-                    android:layout_width="214dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ddl_listaBujias"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="-5dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_toEndOf="@+id/label"
-                    android:prompt="@string/seleccionBujia"
-                    android:spinnerMode="dialog" />
-
-                <TextView
-                    android:id="@+id/label2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/label"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Altas para bujias"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/label6"
@@ -220,10 +195,10 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/btn_guardarModMotor"
+                android:id="@+id/btn_guardarModFrenos"
                 android:layout_width="88dp"
                 android:layout_height="36dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="44dp"
                 android:layout_marginEnd="16dp"
                 android:background="@color/colorPrimary"
                 android:text="Guardar"
@@ -232,8 +207,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/relativeLayout6" />
 
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-</LinearLayout>
+
+</FrameLayout>

@@ -36,7 +36,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private String email = "";
     private String password = "";
 
-
     private FirebaseAuth firebaseAuth;
     DatabaseReference mDatabase;
 
